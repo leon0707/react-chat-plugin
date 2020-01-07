@@ -1,4 +1,4 @@
-# react-chatbox
+# react-chat-plugin
 
 This is an easy-to-use react chat window library. 
 

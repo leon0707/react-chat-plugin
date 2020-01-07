@@ -1,6 +1,6 @@
 {
-  "name": "react-chatbox",
-  "version": "0.0.1",
+  "name": "react-chat-plugin",
+  "version": "0.0.2",
   "description": "A chat widget for react app",
   "main": "dist/main.js",
   "scripts": {
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leon0707/react-chatbox.git"
+    "url": "git+https://github.com/leon0707/react-chat-plugin.git"
   },
   "keywords": [
     "chat",
@@ -46,7 +46,7 @@
   "author": "Leon Feng <leonlibinfeng@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/leon0707/react-chatbox/issues"
+    "url": "https://github.com/leon0707/react-chat-plugin/issues"
   },
-  "homepage": "https://github.com/leon0707/react-chatbox"
+  "homepage": "https://github.com/leon0707/react-chat-plugin"
 }
