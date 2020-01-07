@@ -73,7 +73,7 @@ handleOnSendMessage = (message) => {
 ## props
 | prop | default | type | required |
 | ---- | ---- | ---- | ---- |
-| messages | [] | string | N |
+| messages | [] | array | N |
 | userId | null | string/number | Y |
 | onSendMessage | null | function | Y |
 | width | 400px | string | N |
