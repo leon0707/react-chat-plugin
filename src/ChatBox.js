@@ -73,7 +73,7 @@ class ChatBox extends React.Component {
 
 ChatBox.propTypes = {
     messages: PropTypes.array,
-    userId: PropTypes.node.isRequired,
+    userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     onSendMessage: PropTypes.func.isRequired,
     timestampFormat: PropTypes.string,
     width: PropTypes.string,
