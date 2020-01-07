@@ -1,0 +1,17 @@
+/node_modules
+
+# misc
+.DS_Store
+.env
+npm-debug.log*
+webpack.config.js
+.babelrc
+.git/
+.gitignore
+
+
+# examples
+/example
+
+# src
+/src

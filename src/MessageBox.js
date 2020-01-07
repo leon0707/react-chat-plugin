@@ -2,7 +2,7 @@ import React from 'react';
 import { IconContext } from 'react-icons';
 import { MdError } from 'react-icons/md';
 import moment from 'moment';
-
+import avatar from './placeholder.png';
 
 export default function MessageBox(props) {
     if(props.type === 'text') {
@@ -18,7 +18,7 @@ export default function MessageBox(props) {
             <div className={`react-chat-messageBox ${props.left ? 'react-chat-messageBoxLeft' : 'react-chat-messageBoxRight'}`}>
                 <img
                     alt="avater img"
-                    src={props.author.avatarUrl ? props.author.avatarUrl : 'http://identicon.net/img/identicon.png'}
+                    src={props.author.avatarUrl ? props.author.avatarUrl : avatar}
                     className={`react-chat-avatar ${props.left ? 'react-chat-avatarLeft' : 'react-chat-avatarRight'}`}
                 />
                 <div className={`react-chat-message ${props.left ? 'react-chat-messageLeft' : 'react-chat-messageRight'}`}>
