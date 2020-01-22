@@ -10,8 +10,12 @@ export default function InputBox(props) {
     }
 
     const handleOnClick = (e) => {
-        props.onSendMessage(inputText);
-        setInputText('');
+        if(inputText.length) {
+            props.onSendMessage(inputText);
+            setInputText('');
+        } else {
+            // to do cannot send empty message
+        }
     }
 
     const onKeyPress = (e) => {
@@ -34,7 +38,7 @@ export default function InputBox(props) {
                 onKeyPress={onKeyPress}
                 autoFocus
             />
-        <button className="react-chat-sendButton" onClick={handleOnClick}><MdSend size={'1.5em'}/></button>
+            <button className="react-chat-sendButton" onClick={handleOnClick}><MdSend size={'1.5em'}/></button>
         </div>
     );
 }
