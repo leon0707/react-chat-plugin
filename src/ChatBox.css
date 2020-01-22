@@ -100,6 +100,29 @@
     text-align: right;
 }
 
+.react-chat-message-buttonGroupLeft a {
+    text-align: center;
+    color: #212529;
+}
+
+.react-chat-message-buttonGroupRight a {
+    text-align: center;
+    color: #007bff;
+}
+
+.react-chat-message-button {
+    cursor: pointer;
+    display: inline-block;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 12px;
+    padding: 5px;
+}
+
+.react-chat-message-button:hover {
+    text-decoration: none;
+}
+
 .react-chat-message {
     max-width: 100%;
     margin: 2px 0 0;
@@ -231,8 +254,8 @@
     position: relative;
 }
 
-.react-chat-sendButton:hover {
-    color: #007bff;
+.react-chat-SendIcon:hover {
+    fill: #007bff;
 }
 
 .react-chat-additional {
@@ -249,6 +272,7 @@
 
 .react-chat-error {
     position: absolute;
+    fill: red;
 }
 
 .react-chat-errorLeft {

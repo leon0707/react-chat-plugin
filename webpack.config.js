@@ -25,15 +25,19 @@ module.exports = {
           test: /\.(png|jpg|gif)$/i,
           use: [
             {
-              loader: 'url-loader',
+              loader: "url-loader",
               options: {
                 limit: 8192,
               },
             },
           ],
+        },
+        {
+          test: /\.svg$/,
+          use: ["@svgr/webpack"]
         }
       ]
     },
-    target: 'node', // ingore all dependencies
+    target: "node", // ingore all dependencies
     externals: [nodeExternals()],
   };

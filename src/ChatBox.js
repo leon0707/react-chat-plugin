@@ -38,14 +38,10 @@ class ChatBox extends React.Component {
         const messageList = messages.map((message, idx) => {
             return (
                 <MessageBox
-                    key={idx}
-                    left={message.author && message.author.id !== userId}
-                    content={message.text}
-                    author={message.author}
-                    timestamp={message.timestamp}
-                    timestampFormat={timestampFormat}
-                    hasError={message.hasError}
-                    type={message.type}
+                    key={ idx }
+                    left={ message.author && message.author.id !== userId }
+                    timestampFormat={ timestampFormat }
+                    { ...message }
                 />
             );
         });

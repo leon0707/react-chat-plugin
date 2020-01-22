@@ -6,9 +6,11 @@
 This is an easy-to-use react chat window library.
 
 ![screenshot 1](./screenshots/s1.png)
+![screenshot 2](./screenshots/s2.png)
 
 ## Features
-1. Simple and clean UI.
+1. Simple and clean UI
+2. Good for chatbot or person to person chat
 2. Two different types of messages: `text` or `notification`
 3. Error icon
 5. Extendable input area
@@ -39,9 +41,21 @@ state = {
         },
         {
             'author': {'username': 'user2', 'id': 2, 'avatarUrl': null},
-            'text': 'Hello',
+            'text': 'Show two buttons',
             'type': 'text',
             'timestamp': 1578366425250,
+            'buttons': [
+                {
+                    'type': 'URL',
+                    'title': 'Yahoo',
+                    'payload': 'http://www.yahoo.com'
+                },
+                {
+                    'type': 'URL',
+                    'title': 'Example',
+                    'payload': 'http://www.example.com'
+                }
+            ]
         },
         {
             'author': {'username': 'user1', 'id': 1, 'avatarUrl': 'https://image.flaticon.com/icons/svg/2446/2446032.svg'},
@@ -79,5 +93,6 @@ handleOnSendMessage = (message) => {
 | messages | [] | array | N |
 | userId | null | string/number | Y |
 | onSendMessage | null | function | Y |
+| timestampFormat | calendar | string | N |
 | width | 400px | string | N |
 | height | 60vh | string | N |

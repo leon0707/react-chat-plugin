@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-import { MdSend } from 'react-icons/md';
+// import { MdSend } from 'react-icons/md';
+import SendIcon from './sendIcon.svg';
 
 export default function InputBox(props) {
     const [inputText, setInputText] = useState('');
@@ -38,7 +39,9 @@ export default function InputBox(props) {
                 onKeyPress={onKeyPress}
                 autoFocus
             />
-            <button className="react-chat-sendButton" onClick={handleOnClick}><MdSend size={'1.5em'}/></button>
+            <button className="react-chat-sendButton" onClick={handleOnClick}>
+                <SendIcon className="react-chat-SendIcon"/>
+            </button>
         </div>
     );
 }
