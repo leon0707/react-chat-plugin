@@ -1,6 +1,8 @@
 # react-chat-plugin
 
-This is an easy-to-use react chat window library. 
+[![CircleCI](https://circleci.com/gh/leon0707/react-chat-plugin.svg?style=svg)](https://circleci.com/gh/leon0707/react-chat-plugin)
+
+This is an easy-to-use react chat window library.
 
 ![screenshot 1](./screenshots/s1.png)
 
@@ -78,5 +80,3 @@ handleOnSendMessage = (message) => {
 | onSendMessage | null | function | Y |
 | width | 400px | string | N |
 | height | 60vh | string | N |
-
-
