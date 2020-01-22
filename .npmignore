@@ -20,3 +20,5 @@ screenshots/
 /coverage
 /tests
 jest.config.js
+
+.circleci/
