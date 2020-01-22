@@ -3,6 +3,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 // import { MdSend } from 'react-icons/md';
 import SendIcon from './sendIcon.svg';
 
+
 export default function InputBox(props) {
     const [inputText, setInputText] = useState('');
 
