@@ -1,6 +1,7 @@
 # react-chat-plugin
 
 [![CircleCI](https://circleci.com/gh/leon0707/react-chat-plugin.svg?style=svg)](https://circleci.com/gh/leon0707/react-chat-plugin)
+[![Download](https://img.shields.io/npm/dt/react-chat-plugin.svg?style=svg)](https://www.npmjs.com/package/react-chat-plugin)
 
 This is an easy-to-use react chat window library.
 
