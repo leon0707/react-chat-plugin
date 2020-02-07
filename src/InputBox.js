@@ -30,7 +30,7 @@ export default function InputBox(props) {
     }
 
     return (
-        <div className="react-chat-inputBox">
+        <div className={`react-chat-inputBox ${props.disabled ? 'disabled' : ''}`}>
             <TextareaAutosize
                 maxRows={3}
                 className="react-chat-textarea"
@@ -41,8 +41,8 @@ export default function InputBox(props) {
                 autoFocus
                 disabled={props.disabled}
             />
-            <button className="react-chat-sendButton" onClick={handleOnClick}>
-                <SendIcon className="react-chat-SendIcon"/>
+            <button className="react-chat-sendButton" onClick={handleOnClick} disabled={props.disabled}>
+                <SendIcon className={props.disabled ? "react-chat-SendIcon-disable" : "react-chat-SendIcon"} />
             </button>
         </div>
     );

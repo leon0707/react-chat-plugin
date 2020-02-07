@@ -63,6 +63,9 @@
     overflow-x: hidden;
     overflow-y: auto;
     scroll-behavior: smooth;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: inherit;
 }
 
 .react-chat-messagesListContent {
@@ -197,16 +200,21 @@
 }
 
 .react-chat-inputBox {
-    border-color: inherit;
+    /*border-color: inherit;*/
     color: #212529;
     background-color: #fff;
     padding: 10px 16px;
-    border-width: 1px 0 0;
-    border-style: solid;
+/*    border-width: 1px 0 0;
+    border-style: solid;*/
     flex: 0 0 auto;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+}
+
+.disabled {
+    opacity: 0.3;
+    background-color: #e4e7eb
 }
 
 .react-chat-textarea {
@@ -256,6 +264,11 @@
 
 .react-chat-SendIcon:hover {
     fill: #007bff;
+}
+
+.react-chat-SendIcon-disable {
+    fill: #212529;
+    cursor: auto;
 }
 
 .react-chat-additional {
