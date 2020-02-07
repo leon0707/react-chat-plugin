@@ -49,7 +49,7 @@
     overflow: hidden;
     width: 400px;
     max-width: 500px;
-    margin: auto;
+    margin: auto 20px;
     border-width: 1px;
     border-style: solid;
     outline: 0;

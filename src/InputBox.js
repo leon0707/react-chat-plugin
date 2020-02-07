@@ -34,11 +34,12 @@ export default function InputBox(props) {
             <TextareaAutosize
                 maxRows={3}
                 className="react-chat-textarea"
-                placeholder="Press shift + enter to send"
+                placeholder={props.disabled ? props.disabledInputPlaceholder : props.placeholder ? props.placeholder : "Press shift + enter to send"}
                 value={inputText}
                 onChange={handleOnChange}
                 onKeyPress={onKeyPress}
                 autoFocus
+                disabled={props.disabled}
             />
             <button className="react-chat-sendButton" onClick={handleOnClick}>
                 <SendIcon className="react-chat-SendIcon"/>

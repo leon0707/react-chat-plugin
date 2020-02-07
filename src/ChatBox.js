@@ -34,7 +34,7 @@ class ChatBox extends React.Component {
     }
 
     render() {
-        const { messages = [], userId, timestampFormat = 'calendar', height, width } = this.props;
+        const { messages = [], userId, timestampFormat = 'calendar', height, width, disableInput = false, disabledInputPlaceholder = "", placeholder = null } = this.props;
         const messageList = messages.map((message, idx) => {
             return (
                 <MessageBox
@@ -59,7 +59,7 @@ class ChatBox extends React.Component {
                                 { messageList }
                             </div>
                         </div>
-                        <InputBox onSendMessage={this.handleOnSendMessage} />
+                        <InputBox onSendMessage={this.handleOnSendMessage} disabled={disableInput} placeholder={placeholder} disabledInputPlaceholder={disabledInputPlaceholder} />
                     </div>
                 </div>
             </div>
@@ -73,7 +73,9 @@ ChatBox.propTypes = {
     onSendMessage: PropTypes.func.isRequired,
     timestampFormat: PropTypes.string,
     width: PropTypes.string,
-    height: PropTypes.string
+    height: PropTypes.string,
+    disableInput: PropTypes.bool,
+    disableInputPlaceholder: PropTypes.string
 };
 
 export default ChatBox;
