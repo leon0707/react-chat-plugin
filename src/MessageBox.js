@@ -1,6 +1,7 @@
 import React from 'react';
-import ErrorIcon from './errorIcon.svg';
 import moment from 'moment';
+
+import ErrorIcon from './errorIcon.svg';
 import avatar from './placeholder.png';
 
 export default function MessageBox(props) {

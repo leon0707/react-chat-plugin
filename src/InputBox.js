@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import TextareaAutosize from 'react-textarea-autosize';
-// import { MdSend } from 'react-icons/md';
 import SendIcon from './sendIcon.svg';
 
 
