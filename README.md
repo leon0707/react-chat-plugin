@@ -3,16 +3,15 @@
 [![CircleCI](https://circleci.com/gh/leon0707/react-chat-plugin.svg?style=svg)](https://circleci.com/gh/leon0707/react-chat-plugin)
 [![Download](https://img.shields.io/npm/dt/react-chat-plugin.svg?style=svg)](https://www.npmjs.com/package/react-chat-plugin)
 
-This is an easy-to-use react chat window library.
+This is an easy-to-use react chat plugin.
 
-![screenshot 1](./screenshots/s1.png)
-![screenshot 2](./screenshots/s2.png)
+![screenshot 1](./screenshot.jpg)
 
 ## Features
 1. Simple and clean UI
 2. Good for chatbot or person to person chat
-2. Two different types of messages: `text` or `notification`
-3. Error icon
+3. Two different types of messages: `text` or `notification`
+4. Error icon
 5. Extendable input area
 6. Support new line in the input
 7. Key board action: `shift + enter` to send the message
@@ -85,6 +84,29 @@ handleOnSendMessage = (message) => {
     width={'500px'}
     height={'500px'}
 />
+```
+
+### Show icon
+
+```javascript
+import ChatBox, { ChatFrame } from 'react-chat-plugin';
+
+const handleClickIcon = () => {
+    // toggle showChatbox and showIcon
+}
+
+<ChatFrame
+    chatbox={
+        <ChatBox
+            onSendMessage={handleOnSendMessage} userId={1} messages={messages}
+        />
+    }
+    clickIcon={handleClickIcon}
+    showChatbox={showChatbox}
+    showIcon={showIcon}
+>
+    <div className="Greeting">👋 Hey, I’m a ChatBot! Want to see what I can do?</div>
+</ChatFrame>
 ```
 
 ## props

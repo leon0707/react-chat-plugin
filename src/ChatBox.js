@@ -34,7 +34,14 @@ class ChatBox extends React.Component {
     }
 
     render() {
-        const { messages = [], userId, timestampFormat = 'calendar', height, width, disableInput = false, disabledInputPlaceholder = "", placeholder = null } = this.props;
+        const {
+            messages = [], userId, timestampFormat = 'calendar',
+            height, width, disableInput = false,
+            disabledInputPlaceholder = '',
+            placeholder = null,
+            style
+        } = this.props;
+
         const messageList = messages.map((message, idx) => {
             return (
                 <MessageBox
@@ -45,8 +52,9 @@ class ChatBox extends React.Component {
                 />
             );
         });
+
         return (
-            <div className="react-chat-container">
+            <div style={style} className="react-chat-container">
                 <div className="react-chat-row">
                     <div className="react-chat-viewerBox" style={{
                         height: height,
