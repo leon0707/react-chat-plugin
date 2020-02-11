@@ -5,7 +5,7 @@
 
 This is an easy-to-use react chat plugin.
 
-![screenshot 1](./screenshot.jpg)
+![screenshot 1](./screenshots/screenshot.jpg)
 
 ## Features
 1. Simple and clean UI
