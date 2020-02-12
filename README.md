@@ -12,9 +12,10 @@ This is an easy-to-use react chat plugin.
 2. Good for chatbot or person to person chat
 3. Two different types of messages: `text` or `notification`
 4. Error icon
-5. Extendable input area
-6. Support new line in the input
-7. Key board action: `shift + enter` to send the message
+5. Typing indicator
+6. Extendable input area
+7. Support new line in the input
+8. Key board action: `shift + enter` to send the message
 
 ## Install
 ```shell
@@ -121,3 +122,5 @@ const handleClickIcon = () => {
 | height | 60vh | string | N |
 | disableInput | false | bool | N |
 | disabledInputPlaceholder | "" | string | N |
+| showTypingIndicator | false | bool | N |
+| activeAuthor | object | null | N |
