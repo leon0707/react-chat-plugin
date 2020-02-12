@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-textarea-autosize';
-import SendIcon from './sendIcon.svg';
 
+import SendIcon from './sendIcon.svg';
 
 export default function InputBox(props) {
     const [inputText, setInputText] = useState('');
@@ -10,10 +11,14 @@ export default function InputBox(props) {
         setInputText(e.target.value);
     }
 
+    const strip = (str) => {
+        return str.replace(/^\s+|\s+$/g, '');
+    }
+
     const handleOnClick = (e) => {
-        if(inputText.length) {
-            props.onSendMessage(inputText);
-            setInputText('');
+        let str = strip(inputText);
+        if(str.length) {
+            sendMessage(str);
         } else {
             // to do cannot send empty message
         }
@@ -21,11 +26,18 @@ export default function InputBox(props) {
 
     const onKeyPress = (e) => {
         if(e.shiftKey && e.charCode === 13) {
-            props.onSendMessage(inputText);
-            setInputText('');
+            let str = strip(inputText);
+            if(str.length) {
+                sendMessage(str);
+            }
             e.preventDefault();
             return false;
         }
+    }
+
+    const sendMessage = (message) => {
+        props.onSendMessage(message);
+        setInputText('');
     }
 
     return (
@@ -45,4 +57,11 @@ export default function InputBox(props) {
             </button>
         </div>
     );
+}
+
+InputBox.propTypes = {
+    onSendMessage: PropTypes.func,
+    disabled: PropTypes.bool,
+    disabledInputPlaceholder: PropTypes.string,
+    placeholder: PropTypes.string
 }

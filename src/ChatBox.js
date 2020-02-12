@@ -35,11 +35,17 @@ class ChatBox extends React.Component {
 
     render() {
         const {
-            messages = [], userId, timestampFormat = 'calendar',
-            height, width, disableInput = false,
-            disabledInputPlaceholder = '',
-            placeholder = null,
-            style
+            messages,
+            userId,
+            timestampFormat,
+            height,
+            width,
+            disableInput,
+            disabledInputPlaceholder,
+            placeholder,
+            style,
+            showTypingIndicator,
+            activeAuthor
         } = this.props;
 
         const messageList = messages.map((message, idx) => {
@@ -65,6 +71,9 @@ class ChatBox extends React.Component {
                         >
                             <div className="react-chat-messagesListContent">
                                 { messageList }
+                                {(showTypingIndicator && activeAuthor !== null) &&
+                                    <MessageBox type="indicator" author={activeAuthor} text="" left={true}/>
+                                }
                             </div>
                         </div>
                         <InputBox onSendMessage={this.handleOnSendMessage} disabled={disableInput} placeholder={placeholder} disabledInputPlaceholder={disabledInputPlaceholder} />
@@ -83,7 +92,21 @@ ChatBox.propTypes = {
     width: PropTypes.string,
     height: PropTypes.string,
     disableInput: PropTypes.bool,
-    disableInputPlaceholder: PropTypes.string
+    disabledInputPlaceholder: PropTypes.string,
+    placeholder: PropTypes.string,
+    style: PropTypes.object,
+    showTypingIndicator: PropTypes.bool,
+    activeAuthor: PropTypes.object
 };
+
+ChatBox.defaultProps = {
+    messages: [],
+    timestampFormat: 'calendar',
+    disableInput: false,
+    disabledInputPlaceholder: '',
+    placeholder: '',
+    showTypingIndicator: false,
+    activeAuthor: null
+}
 
 export default ChatBox;

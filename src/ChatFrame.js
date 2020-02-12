@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import RobotIcon from './comments.svg';
 import CloseIcon from './compress-alt.svg';
@@ -37,6 +38,14 @@ function ChatFrame(props) {
 			</div>
 		</div>
 	);
+}
+
+ChatFrame.propTypes = {
+	icon: PropTypes.element,
+	chatbox: PropTypes.element.isRequired,
+	showChatbox: PropTypes.bool,
+	clickIcon: PropTypes.func,
+	showIcon: PropTypes.bool
 }
 
 export default ChatFrame;
