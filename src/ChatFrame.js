@@ -8,7 +8,7 @@ import './ChatFrame.css';
 
 function ChatFrame(props) {
 
-	const { icon, chatbox, showChatbox, clickIcon, showIcon, iconStyle } = props;
+	const { icon, chatbox, showChatbox, clickIcon, showIcon, iconStyle, style } = props;
 
 	return (
 		<div className="react-chat-frame">
@@ -27,7 +27,7 @@ function ChatFrame(props) {
 					</div>
 				}
 				{showIcon &&
-					<div className="react-chat-frame-icon-container" onClick={clickIcon} >
+					<div className="react-chat-frame-icon-container" onClick={clickIcon} style={style} >
 					{icon !== undefined ?
 						icon
 						:
