@@ -46,7 +46,8 @@
         "linebreak-style": [
             "error",
             "unix"
-        ]
+        ],
+        "jest/no-hooks": "off"
     },
     "settings": {
         "react": {

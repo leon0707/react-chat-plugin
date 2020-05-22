@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import InputBox from '../src/InputBox';
 
-describe('InputBox', () => {
+describe('inputBox', () => {
   let wrapper;
   const paraFunc = jest.fn();
 
@@ -17,23 +17,26 @@ describe('InputBox', () => {
     wrapper.unmount();
   });
 
-  test('InputBox - render', () => {
+  it('inputBox - render', () => {
+    expect.assertions(1);
     expect(
       wrapper.find('div').hasClass('react-chat-inputBox')
-    ).toEqual(true);
+    ).toStrictEqual(true);
   });
 
-  test('InputBox - sitimulate user input', () => {
+  it('inputBox - sitimulate user input', () => {
+    expect.assertions(1);
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
         value: 'hello'
       }
     });
-    expect(textarea.instance().value).toEqual('hello');
+    expect(textarea.instance().value).toStrictEqual('hello');
   });
 
-  test('InputBox - sitimulate click', () => {
+  it('inputBox - sitimulate click', () => {
+    expect.assertions(2);
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
@@ -44,10 +47,11 @@ describe('InputBox', () => {
     const button = wrapper.find('button');
     button.simulate('click');
     expect(paraFunc).toHaveBeenCalledWith('hello');
-    expect(textarea.instance().value).toEqual('');
+    expect(textarea.instance().value).toStrictEqual('');
   });
 
-  test('InputBox - sitimulate key press', () => {
+  it('inputBox - sitimulate key press', () => {
+    expect.assertions(2);
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
@@ -60,6 +64,6 @@ describe('InputBox', () => {
       charCode: 13
     });
     expect(paraFunc).toHaveBeenCalledWith('hello');
-    expect(textarea.instance().value).toEqual('');
+    expect(textarea.instance().value).toStrictEqual('');
   });
 });

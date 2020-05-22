@@ -3,17 +3,19 @@ import { shallow } from 'enzyme';
 
 import MessageBox from '../src/MessageBox';
 
-describe('MessageBox', () => {
-  test('InputBox - notification', () => {
+describe('messageBox', () => {
+  it('inputBox - notification', () => {
+    expect.assertions(1);
     const wrapper = shallow(
       <MessageBox type={'notification'} content={'notification'} />
     );
     expect(
       wrapper.find('div').hasClass('react-chat-notification')
-    ).toEqual(true);
+    ).toStrictEqual(true);
   });
 
-  test('InputBox - text', () => {
+  it('inputBox - text', () => {
+    expect.assertions(1);
     const message = {
       left: true,
       author: {},
@@ -24,10 +26,11 @@ describe('MessageBox', () => {
     );
     expect(
       wrapper.find('div').first().hasClass('react-chat-messageBoxLeft')
-    ).toEqual(true);
+    ).toStrictEqual(true);
   });
 
-  test('InputBox - error', () => {
+  it('inputBox - error', () => {
+    expect.assertions(2);
     const message = {
       left: false,
       author: {},
@@ -38,9 +41,9 @@ describe('MessageBox', () => {
     );
     expect(
       wrapper.find('div').first().hasClass('react-chat-messageBoxRight')
-    ).toEqual(true);
+    ).toStrictEqual(true);
     expect(
       wrapper.exists('.react-chat-bubbleWithError')
-    ).toEqual(true);
+    ).toStrictEqual(true);
   });
 });

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import ChatBox from '../src/ChatBox';
 
-describe('ChatBox', () => {
+describe('chatBox', () => {
   let wrapper;
   const onSendFunc = jest.fn();
 
@@ -17,13 +17,15 @@ describe('ChatBox', () => {
     wrapper.unmount();
   });
 
-  test('ChatBox - render', () => {
+  it('chatBox - render', () => {
+    expect.assertions(1);
     expect(
       wrapper.find('div').first().hasClass('react-chat-container')
-    ).toEqual(true);
+    ).toStrictEqual(true);
   });
 
-  test('ChatBox - onSendMessage', () => {
+  it('chatBox - onSendMessage', () => {
+    expect.assertions(1);
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
