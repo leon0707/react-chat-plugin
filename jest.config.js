@@ -82,8 +82,8 @@ module.exports = {
 
   // A map from regular expressions to module names that allow to stub out resources with a single module
   moduleNameMapper: {
-    ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "babel-jest",
-    "\\.svg": "<rootDir>/tests/svgrMock.js"
+    '.+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$': 'babel-jest',
+    '\\.svg': '<rootDir>/tests/svgrMock.js'
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -147,14 +147,14 @@ module.exports = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "**/tests/**/*.[jt]s?(x)"
+    '**/tests/**/*.[jt]s?(x)'
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   testPathIgnorePatterns: [
-    "/node_modules/",
-    "setupTests.js",
-    "svgrMock.js"
+    '/node_modules/',
+    'setupTests.js',
+    'svgrMock.js'
   ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -184,7 +184,7 @@ module.exports = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-  verbose: true,
+  verbose: true
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],

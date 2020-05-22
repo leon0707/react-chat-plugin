@@ -7,7 +7,9 @@
     "test": "jest --config ./jest.config.js",
     "build": "webpack --mode production --display-modules",
     "test:watch": "npm run-script test -- --watch",
-    "snyk": "./node_modules/.bin/snyk test"
+    "eslint": "npx eslint . --fix",
+    "snyk": "./node_modules/.bin/snyk test",
+    "precommit": "npm run-script snyk && npm test --watchAll=false && npm run-script eslint"
   },
   "dependencies": {
     "moment": "^2.24.0",
@@ -46,8 +48,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run-script snyk",
-      "pre-push": "npm test --watchAll=false"
+      "pre-commit": "npm run-script precommit",
+      "pre-push": "npm run-script precommit"
     }
   },
   "peerDependencies": {
