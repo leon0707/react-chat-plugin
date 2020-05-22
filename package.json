@@ -39,7 +39,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run-script snyk",
-      "pre-push": "npm test --watchAll=false && npm run-script eslint"
+      "pre-push": "npm test --watchAll=false"
     }
   },
   "peerDependencies": {
