@@ -1,6 +1,6 @@
 {
   "name": "react-chat-plugin",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A chat widget for react app",
   "main": "dist/main.js",
   "scripts": {
