@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/leon0707/react-chat-plugin.svg?style=svg)](https://circleci.com/gh/leon0707/react-chat-plugin)
 [![Download](https://img.shields.io/npm/dt/react-chat-plugin.svg?style=svg)](https://www.npmjs.com/package/react-chat-plugin)
-[![Package Quality](https://npm.packagequality.com/shield/react-chat-plugin.svg)](https://packagequality.com/#?package=react-chat-plugin)
+[![Known Vulnerabilities](https://snyk.io/test/github/leon0707/react-chat-plugin/badge.svg?targetFile=package.json)](https://snyk.io/test/github/leon0707/react-chat-plugin?targetFile=package.json)
 
 This is an easy-to-use react chat plugin.
 
