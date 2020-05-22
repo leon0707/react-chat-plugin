@@ -10,8 +10,8 @@
     "eslint": "npx eslint . --fix",
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
-    "precommit": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
-    "publish": "npm version patch && npm run-script build && npm publish"
+    "prepush": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
+    "publish": "npm version patch && git push --tags && npm run-script build && npm publish"
   },
   "dependencies": {
     "moment": "^2.24.0",
@@ -53,8 +53,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run-script precommit",
-      "pre-push": "npm run-script precommit && npm run-script build"
+      "pre-push": "npm run-script prepush && npm run-script build"
     }
   },
   "peerDependencies": {
