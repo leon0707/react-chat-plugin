@@ -7,6 +7,7 @@
 This is an easy-to-use react chat plugin.
 
 ![screenshot 1](./screenshots/screenshot.jpg)
+### [changelog](./changelog.md)
 
 ## Features
 1. Simple and clean UI

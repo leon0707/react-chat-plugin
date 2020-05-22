@@ -9,6 +9,10 @@ webpack.config.js
 .git/
 .gitignore
 screenshots/
+.eslintrc.json
+.snyk
+.prettierrc
+.editorconfig
 
 
 # examples
