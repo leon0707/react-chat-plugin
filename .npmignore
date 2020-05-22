@@ -13,6 +13,7 @@ screenshots/
 .snyk
 .prettierrc
 .editorconfig
+.eslintignore
 
 
 # examples
