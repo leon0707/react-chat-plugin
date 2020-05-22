@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: 'main.js',
     library: pkg.name,
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
@@ -14,12 +14,12 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|jpg|gif)$/i,
@@ -27,17 +27,17 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192
-            }
-          }
-        ]
+              limit: 8192,
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack']
-      }
-    ]
+        use: ['@svgr/webpack'],
+      },
+    ],
   },
   target: 'node', // ingore all dependencies
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
 };

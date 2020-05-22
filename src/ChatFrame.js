@@ -6,33 +6,44 @@ import CloseIcon from './compress-alt.svg';
 
 import './ChatFrame.css';
 
-function ChatFrame (props) {
-  const { icon, chatbox, showChatbox, clickIcon, showIcon, iconStyle, style } = props;
+function ChatFrame(props) {
+  const {
+    icon,
+    chatbox,
+    showChatbox,
+    clickIcon,
+    showIcon,
+    iconStyle,
+    style,
+  } = props;
 
   return (
     <div className="react-chat-frame">
       <div className="react-chat-frame-wrapper">
-        {showChatbox && chatbox !== undefined &&
+        {showChatbox && chatbox !== undefined && (
           <>
             <div className="react-chat-close-icon" onClick={clickIcon}>
               <CloseIcon />
             </div>
-            { chatbox }
+            {chatbox}
           </>
-        }
-        {!showChatbox &&
-          <div className="react-chat-frame-custom">
-            { props.children }
+        )}
+        {!showChatbox && (
+          <div className="react-chat-frame-custom">{props.children}</div>
+        )}
+        {showIcon && (
+          <div
+            className="react-chat-frame-icon-container"
+            onClick={clickIcon}
+            style={style}
+          >
+            {icon !== undefined ? (
+              icon
+            ) : (
+              <RobotIcon className="react-chat-frame-icon" style={iconStyle} />
+            )}
           </div>
-        }
-        {showIcon &&
-          <div className="react-chat-frame-icon-container" onClick={clickIcon} style={style} >
-            {icon !== undefined
-              ? icon
-              : <RobotIcon className="react-chat-frame-icon" style={iconStyle} />
-            }
-          </div>
-        }
+        )}
       </div>
     </div>
   );
@@ -46,7 +57,7 @@ ChatFrame.propTypes = {
   showIcon: PropTypes.bool,
   children: PropTypes.element,
   iconStyle: PropTypes.object,
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 export default ChatFrame;

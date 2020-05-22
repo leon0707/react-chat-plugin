@@ -7,33 +7,33 @@ import MessageBox from './MessageBox';
 import './ChatBox.css';
 
 class ChatBox extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.scrollToBottom = this.scrollToBottom.bind(this);
     this.handleOnSendMessage = this.handleOnSendMessage.bind(this);
   }
 
-  scrollToBottom () {
+  scrollToBottom() {
     if (this.messagesList) {
       this.messagesList.scrollTop =
-                this.messagesList.scrollHeight - this.messagesList.clientHeight;
+        this.messagesList.scrollHeight - this.messagesList.clientHeight;
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.scrollToBottom();
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     this.scrollToBottom();
   }
 
-  handleOnSendMessage (message) {
+  handleOnSendMessage(message) {
     this.props.onSendMessage(message);
   }
 
-  render () {
+  render() {
     const {
       messages,
       userId,
@@ -45,16 +45,16 @@ class ChatBox extends React.Component {
       placeholder,
       style,
       showTypingIndicator,
-      activeAuthor
+      activeAuthor,
     } = this.props;
 
     const messageList = messages.map((message, idx) => {
       return (
         <MessageBox
-          key={ idx }
-          left={ message.author && message.author.id !== userId }
-          timestampFormat={ timestampFormat }
-          { ...message }
+          key={idx}
+          left={message.author && message.author.id !== userId}
+          timestampFormat={timestampFormat}
+          {...message}
         />
       );
     });
@@ -62,21 +62,35 @@ class ChatBox extends React.Component {
     return (
       <div style={style} className="react-chat-container">
         <div className="react-chat-row">
-          <div className="react-chat-viewerBox" style={{
-            height: height,
-            width: width
-          }}>
-            <div className="react-chat-messagesList"
+          <div
+            className="react-chat-viewerBox"
+            style={{
+              height: height,
+              width: width,
+            }}
+          >
+            <div
+              className="react-chat-messagesList"
               ref={(el) => (this.messagesList = el)}
             >
               <div className="react-chat-messagesListContent">
-                { messageList }
-                {(showTypingIndicator && activeAuthor !== null) &&
-                                    <MessageBox type="indicator" author={activeAuthor} text="" left={true}/>
-                }
+                {messageList}
+                {showTypingIndicator && activeAuthor !== null && (
+                  <MessageBox
+                    type="indicator"
+                    author={activeAuthor}
+                    text=""
+                    left={true}
+                  />
+                )}
               </div>
             </div>
-            <InputBox onSendMessage={this.handleOnSendMessage} disabled={disableInput} placeholder={placeholder} disabledInputPlaceholder={disabledInputPlaceholder} />
+            <InputBox
+              onSendMessage={this.handleOnSendMessage}
+              disabled={disableInput}
+              placeholder={placeholder}
+              disabledInputPlaceholder={disabledInputPlaceholder}
+            />
           </div>
         </div>
       </div>
@@ -96,7 +110,7 @@ ChatBox.propTypes = {
   placeholder: PropTypes.string,
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
-  activeAuthor: PropTypes.object
+  activeAuthor: PropTypes.object,
 };
 
 ChatBox.defaultProps = {
@@ -106,7 +120,7 @@ ChatBox.defaultProps = {
   disabledInputPlaceholder: '',
   placeholder: '',
   showTypingIndicator: false,
-  activeAuthor: null
+  activeAuthor: null,
 };
 
 export default ChatBox;

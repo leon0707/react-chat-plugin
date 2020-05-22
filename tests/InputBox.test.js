@@ -8,9 +8,7 @@ describe('inputBox', () => {
   const paraFunc = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(
-      <InputBox onSendMessage={paraFunc} />
-    );
+    wrapper = mount(<InputBox onSendMessage={paraFunc} />);
   });
 
   afterEach(() => {
@@ -19,9 +17,9 @@ describe('inputBox', () => {
 
   it('inputBox - render', () => {
     expect.assertions(1);
-    expect(
-      wrapper.find('div').hasClass('react-chat-inputBox')
-    ).toStrictEqual(true);
+    expect(wrapper.find('div').hasClass('react-chat-inputBox')).toStrictEqual(
+      true
+    );
   });
 
   it('inputBox - sitimulate user input', () => {
@@ -29,8 +27,8 @@ describe('inputBox', () => {
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
-        value: 'hello'
-      }
+        value: 'hello',
+      },
     });
     expect(textarea.instance().value).toStrictEqual('hello');
   });
@@ -40,8 +38,8 @@ describe('inputBox', () => {
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
-        value: 'hello'
-      }
+        value: 'hello',
+      },
     });
 
     const button = wrapper.find('button');
@@ -55,13 +53,13 @@ describe('inputBox', () => {
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
-        value: 'hello'
-      }
+        value: 'hello',
+      },
     });
 
     textarea.simulate('keypress', {
       shiftKey: true,
-      charCode: 13
+      charCode: 13,
     });
     expect(paraFunc).toHaveBeenCalledWith('hello');
     expect(textarea.instance().value).toStrictEqual('');

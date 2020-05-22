@@ -8,9 +8,7 @@ describe('chatBox', () => {
   const onSendFunc = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(
-      <ChatBox userId={1} onSendMessage={onSendFunc} />
-    );
+    wrapper = mount(<ChatBox userId={1} onSendMessage={onSendFunc} />);
   });
 
   afterEach(() => {
@@ -29,8 +27,8 @@ describe('chatBox', () => {
     const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
-        value: 'hello'
-      }
+        value: 'hello',
+      },
     });
     const button = wrapper.find('button');
     button.simulate('click');

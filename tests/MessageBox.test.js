@@ -19,11 +19,9 @@ describe('messageBox', () => {
     const message = {
       left: true,
       author: {},
-      content: 'text'
+      content: 'text',
     };
-    const wrapper = shallow(
-      <MessageBox type={'text'} { ...message } />
-    );
+    const wrapper = shallow(<MessageBox type={'text'} {...message} />);
     expect(
       wrapper.find('div').first().hasClass('react-chat-messageBoxLeft')
     ).toStrictEqual(true);
@@ -34,16 +32,12 @@ describe('messageBox', () => {
     const message = {
       left: false,
       author: {},
-      hasError: true
+      hasError: true,
     };
-    const wrapper = shallow(
-      <MessageBox type={'text'} { ...message } />
-    );
+    const wrapper = shallow(<MessageBox type={'text'} {...message} />);
     expect(
       wrapper.find('div').first().hasClass('react-chat-messageBoxRight')
     ).toStrictEqual(true);
-    expect(
-      wrapper.exists('.react-chat-bubbleWithError')
-    ).toStrictEqual(true);
+    expect(wrapper.exists('.react-chat-bubbleWithError')).toStrictEqual(true);
   });
 });
