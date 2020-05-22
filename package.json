@@ -6,11 +6,12 @@
   "scripts": {
     "test": "jest --config ./jest.config.js",
     "build": "webpack --mode production --display-modules",
-    "test:watch": "npm run-script test -- --watch"
+    "test:watch": "npm run-script test -- --watch",
+    "snyk": "./node_modules/.bin/snyk test"
   },
   "dependencies": {
-    "react-textarea-autosize": "^7.1.2",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "react-textarea-autosize": "^7.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
@@ -31,7 +32,8 @@
     "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "snyk": "^1.324.0"
   },
   "peerDependencies": {
     "react": "^16.12.0",
@@ -54,5 +56,6 @@
   "bugs": {
     "url": "https://github.com/leon0707/react-chat-plugin/issues"
   },
-  "homepage": "https://github.com/leon0707/react-chat-plugin"
+  "homepage": "https://github.com/leon0707/react-chat-plugin",
+  "snyk": true
 }
