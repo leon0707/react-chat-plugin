@@ -11,7 +11,7 @@
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
     "prepush": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
-    "publish": "npm version patch && git push --tags && npm run-script build && npm publish"
+    "prepublish": "npm version patch && git push --tags && npm run-script build"
   },
   "dependencies": {
     "moment": "^2.24.0",
