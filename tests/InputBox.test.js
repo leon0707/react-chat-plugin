@@ -5,7 +5,7 @@ import InputBox from '../src/InputBox';
 
 describe('InputBox', () => {
   let wrapper;
-  let paraFunc = jest.fn();
+  const paraFunc = jest.fn();
 
   beforeEach(() => {
     wrapper = mount(
@@ -24,7 +24,7 @@ describe('InputBox', () => {
   });
 
   test('InputBox - sitimulate user input', () => {
-    let textarea = wrapper.find('textarea');
+    const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
         value: 'hello'
@@ -34,21 +34,21 @@ describe('InputBox', () => {
   });
 
   test('InputBox - sitimulate click', () => {
-    let textarea = wrapper.find('textarea');
+    const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
         value: 'hello'
       }
     });
 
-    let button = wrapper.find('button');
+    const button = wrapper.find('button');
     button.simulate('click');
     expect(paraFunc).toHaveBeenCalledWith('hello');
     expect(textarea.instance().value).toEqual('');
   });
 
   test('InputBox - sitimulate key press', () => {
-    let textarea = wrapper.find('textarea');
+    const textarea = wrapper.find('textarea');
     textarea.simulate('change', {
       target: {
         value: 'hello'

@@ -4,9 +4,8 @@ import { shallow } from 'enzyme';
 import MessageBox from '../src/MessageBox';
 
 describe('MessageBox', () => {
-
   test('InputBox - notification', () => {
-    let wrapper = shallow(
+    const wrapper = shallow(
       <MessageBox type={'notification'} content={'notification'} />
     );
     expect(
@@ -15,12 +14,12 @@ describe('MessageBox', () => {
   });
 
   test('InputBox - text', () => {
-    let message = {
-        left: true,
-        author: {},
-        content: 'text'
+    const message = {
+      left: true,
+      author: {},
+      content: 'text'
     };
-    let wrapper = shallow(
+    const wrapper = shallow(
       <MessageBox type={'text'} { ...message } />
     );
     expect(
@@ -29,12 +28,12 @@ describe('MessageBox', () => {
   });
 
   test('InputBox - error', () => {
-    let message = {
-        left: false,
-        author: {},
-        hasError: true
+    const message = {
+      left: false,
+      author: {},
+      hasError: true
     };
-    let wrapper = shallow(
+    const wrapper = shallow(
       <MessageBox type={'text'} { ...message } />
     );
     expect(

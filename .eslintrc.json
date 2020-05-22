@@ -1,0 +1,49 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "standard"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+        "block-scoped-var": "error",
+        "class-methods-use-this": "error",
+        "curly": "error",
+        "default-case": "error",
+        "default-case-last": "error",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "indent": [
+            "error",
+            2
+        ],
+        "linebreak-style": [
+            "error",
+            "unix"
+        ]
+    },
+    "settings": {
+        "react": {
+            "pragma": "React",
+            "version": "16.12"
+        } 
+    }
+}
