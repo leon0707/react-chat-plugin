@@ -1,33 +1,66 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import ChatFrame from '../src/ChatFrame';
+import ChatBox, { ChatFrame } from '../src';
 
 describe('chatFrame', () => {
-  //   let wrapper;
-  //   const onSendFunc = jest.fn();
-  //   beforeEach(() => {
-  //     wrapper = mount(<ChatBox userId={1} onSendMessage={onSendFunc} />);
-  //   });
-  //   afterEach(() => {
-  //     wrapper.unmount();
-  //   });
-  //   it('chatBox - render', () => {
-  //     expect.assertions(1);
-  //     expect(
-  //       wrapper.find('div').first().hasClass('react-chat-container')
-  //     ).toStrictEqual(true);
-  //   });
-  //   it('chatBox - onSendMessage', () => {
-  //     expect.assertions(1);
-  //     const textarea = wrapper.find('textarea');
-  //     textarea.simulate('change', {
-  //       target: {
-  //         value: 'hello',
-  //       },
-  //     });
-  //     const button = wrapper.find('button');
-  //     button.simulate('click');
-  //     expect(onSendFunc).toHaveBeenCalledWith('hello');
-  //   });
+  let onSendFunc;
+  let handleClickIcon;
+  let wrapper;
+  beforeEach(() => {
+    onSendFunc = jest.fn();
+    handleClickIcon = jest.fn();
+  });
+
+  it('chatFrame - render', () => {
+    expect.assertions(2);
+    wrapper = mount(
+      <ChatFrame
+        chatbox={
+          <ChatBox
+            onSendMessage={onSendFunc}
+            userId={1}
+            messages={[]}
+            showTypingIndicator={true}
+            activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          />
+        }
+        clickIcon={handleClickIcon}
+        showChatbox={false}
+        showIcon={true}
+      >
+        <div className="Greeting" style={{ width: '400px' }}>
+          👋 Hey, I’m a ChatBot! Want to see what I can do?
+        </div>
+      </ChatFrame>
+    );
+    expect(wrapper.find('div.react-chat-frame-icon-container').exists()).toBe(
+      true
+    );
+    expect(wrapper.find('div.Greeting').exists()).toBe(true);
+  });
+  it('chatBox - onSendMessage', () => {
+    expect.assertions(1);
+    wrapper = mount(
+      <ChatFrame
+        chatbox={
+          <ChatBox
+            onSendMessage={onSendFunc}
+            userId={1}
+            messages={[]}
+            showTypingIndicator={true}
+            activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          />
+        }
+        clickIcon={handleClickIcon}
+        showChatbox={true}
+        showIcon={false}
+      >
+        <div className="Greeting" style={{ width: '400px' }}>
+          👋 Hey, I’m a ChatBot! Want to see what I can do?
+        </div>
+      </ChatFrame>
+    );
+    expect(wrapper.find('div.react-chat-container').exists()).toBe(true);
+  });
 });

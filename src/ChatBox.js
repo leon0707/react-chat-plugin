@@ -48,7 +48,6 @@ class ChatBox extends React.Component {
       activeAuthor,
     } = this.props;
 
-    console.log(showTypingIndicator);
     const messageList = messages.map((message, idx) => {
       return (
         <MessageBox

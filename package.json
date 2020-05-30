@@ -11,6 +11,7 @@
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
     "prepush": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
+    "precommit": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
     "prepare": "npm version patch",
     "prepublishOnly": "git push --tags",
     "start": "webpack-dev-server --open --mode=development --config example/webpack.config.js"
@@ -57,6 +58,7 @@
   },
   "husky": {
     "hooks": {
+      "pre-commit": "npm run-script precommit",
       "pre-push": "npm run-script prepush && npm run-script build"
     }
   },

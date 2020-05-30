@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { FaBeer } from 'react-icons/fa';
 import ChatBox, { ChatFrame } from '../src';
 
 import RobotIcon from './bot.svg';
@@ -86,7 +85,7 @@ function Example() {
           onSendMessage={handleOnSendMessage}
           userId={1}
           messages={attr.messages}
-          style={{ width: '500px' }}
+          style={{ width: '300px' }}
           showTypingIndicator={true}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
         />
@@ -97,10 +96,8 @@ function Example() {
       showIcon={attr.showIcon}
       iconStyle={{ background: 'red', fill: 'white' }}
     >
-      <div className="Greeting" style={{ width: '400px' }}>
-        👋 Hey, I’m a ChatBot! Want to see what I can do? 👋 Hey, I’m a ChatBot!
-        Want to see what I can do? 👋 Hey, I’m a ChatBot! Want to see what I can
-        do? 👋 Hey, I’m a ChatBot! Want to see what I can do?
+      <div className="Greeting" style={{ width: '300px' }}>
+        👋 Hey, I’m a ChatBot! Want to see what I can do?
       </div>
     </ChatFrame>
   );
