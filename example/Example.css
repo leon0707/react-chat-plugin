@@ -1,0 +1,17 @@
+.Greeting {
+  border-radius: 6px;
+  background: #fff;
+  font-size: 1em;
+  padding: 15px 20px;
+  box-shadow: 0 5px 20px rgba(0,0,0,.1);
+  transition: box-shadow .3s,opacity .3s,-webkit-box-shadow .3s;
+}
+
+.Greeting:hover {
+  box-shadow: 0 5px 20px rgba(0,0,0,.2);
+}
+
+.Icon {
+  margin: 0 auto;
+  display: block;
+}

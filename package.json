@@ -6,13 +6,14 @@
   "scripts": {
     "test": "jest --config ./jest.config.js",
     "build": "webpack --mode production --display-modules",
-    "test:watch": "npm run-script test -- --watch",
+    "test:watch": "npm run-script test --watch",
     "eslint": "npx eslint . --fix",
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
     "prepush": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
     "prepare": "npm version patch",
-    "prepublishOnly": "git push --tags"
+    "prepublishOnly": "git push --tags",
+    "start": "webpack-dev-server --open --mode=development --config example/webpack.config.js"
   },
   "dependencies": {
     "moment": "^2.24.0",
@@ -39,6 +40,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-standard": "^4.0.1",
+    "html-webpack-plugin": "^4.3.0",
     "husky": "^4.2.5",
     "jest": "^24.9.0",
     "prettier": "^2.0.5",
@@ -50,6 +52,7 @@
     "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.11.0",
     "webpack-node-externals": "^1.7.2"
   },
   "husky": {

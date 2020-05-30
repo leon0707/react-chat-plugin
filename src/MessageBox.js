@@ -36,7 +36,7 @@ function MessageBox(props) {
                 href={button.payload}
                 rel="noreferrer"
                 target="_blank"
-                className="my-1 react-chat-message-button"
+                className="react-chat-message-button"
               >
                 {button.title}
               </a>
@@ -102,7 +102,7 @@ function MessageBox(props) {
     );
   } else if (type === 'notification') {
     return (
-      <div className="my-3 text-center text-secondary react-chat-notification">
+      <div className="text-center text-secondary react-chat-notification">
         {text}
       </div>
     );

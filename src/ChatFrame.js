@@ -14,7 +14,7 @@ function ChatFrame(props) {
     clickIcon,
     showIcon,
     iconStyle,
-    style,
+    children,
   } = props;
 
   return (
@@ -29,18 +29,18 @@ function ChatFrame(props) {
           </>
         )}
         {!showChatbox && (
-          <div className="react-chat-frame-custom">{props.children}</div>
+          <div className="react-chat-frame-custom">{children}</div>
         )}
         {showIcon && (
           <div
             className="react-chat-frame-icon-container"
             onClick={clickIcon}
-            style={style}
+            style={iconStyle}
           >
             {icon !== undefined ? (
               icon
             ) : (
-              <RobotIcon className="react-chat-frame-icon" style={iconStyle} />
+              <RobotIcon className="react-chat-frame-icon" />
             )}
           </div>
         )}
@@ -57,7 +57,6 @@ ChatFrame.propTypes = {
   showIcon: PropTypes.bool,
   children: PropTypes.element,
   iconStyle: PropTypes.object,
-  style: PropTypes.object,
 };
 
 export default ChatFrame;
