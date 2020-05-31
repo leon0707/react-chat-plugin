@@ -21,6 +21,7 @@ screenshots/
 
 # src
 /src
+/example
 
 /coverage
 /tests
