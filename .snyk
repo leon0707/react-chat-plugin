@@ -6,18 +6,32 @@ patch:
   SNYK-JS-LODASH-567746:
     - '@babel/core > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      html-webpack-plugin > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@babel/core > @babel/types > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      eslint > inquirer > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@babel/preset-env > @babel/types > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      eslint > table > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@babel/core > @babel/generator > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      webpack-dev-server > http-proxy-middleware > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@babel/core > @babel/traverse > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      eslint-plugin-jest > @typescript-eslint/experimental-utils > @typescript-eslint/typescript-estree > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@svgr/webpack > @babel/core > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      webpack-dev-server > portfinder > async > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - '@babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
         patched: '2020-05-22T14:30:28.905Z'
+      eslint > lodash:
+        patched: '2020-05-30T23:06:25.884Z'
     - enzyme > cheerio > lodash:
         patched: '2020-05-22T14:30:28.905Z'
     - '@babel/core > @babel/generator > @babel/types > lodash':
