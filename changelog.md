@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org)
 
+# v0.1.11
+### 5/30/2020
+- add `example`
+- update styles
+- fix vulnerabilities
+
 # v0.1.10
 ### 5/22/2020
 - fix bugs in publish workflow
