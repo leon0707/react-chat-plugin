@@ -24,8 +24,14 @@ This is an easy-to-use react chat plugin.
 npm install react-chat-plugin --save
 ```
 
+## Run example
+```shell
+npm start
+```
+
 ## Import
 ```javascript
+import ChatBox, { ChatFrame } from 'react-chat-plugin';
 
 state = {
   messages: [
