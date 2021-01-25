@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { KEYS } from './constant';
+import { KEYS, TIMESTAMPFORMAT } from './constant';
 import InputBox from './InputBox';
 import MessageBox from './MessageBox';
 
@@ -105,7 +105,7 @@ ChatBox.propTypes = {
   messages: PropTypes.array,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onSendMessage: PropTypes.func.isRequired,
-  timestampFormat: PropTypes.string,
+  timestampFormat: PropTypes.oneOf(TIMESTAMPFORMAT),
   width: PropTypes.string,
   height: PropTypes.string,
   disableInput: PropTypes.bool,

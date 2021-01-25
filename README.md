@@ -218,10 +218,11 @@ function Example() {
 | placeholder | "" | string | N |
 | userId | null | string/number | Y |
 | onSendMessage | null | function | Y |
-| timestampFormat | calendar | string | N |
+| timestampFormat | `calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a` | string | N |
 | width | 400px | string | N |
 | height | 60vh | string | N |
 | disableInput | false | bool | N |
 | disabledInputPlaceholder | "" | string | N |
 | showTypingIndicator | false | bool | N |
 | activeAuthor | object | null | N |
+| onSendKey | null | 'shiftKey', 'ctrlKey' | N | 
