@@ -88,6 +88,7 @@ function Example() {
           style={{ width: '300px' }}
           showTypingIndicator={true}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          onSendKey={'shiftKey'}
         />
       }
       icon={<RobotIcon className="Icon" />}

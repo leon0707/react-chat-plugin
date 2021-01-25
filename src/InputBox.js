@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-textarea-autosize';
-
+import { strip } from './utils';
+import { KEYS } from './constant';
 import SendIcon from './sendIcon.svg';
 
 export default function InputBox(props) {
@@ -9,10 +10,6 @@ export default function InputBox(props) {
 
   const handleOnChange = (e) => {
     setInputText(e.target.value);
-  };
-
-  const strip = (str) => {
-    return str.replace(/^\s+|\s+$/g, '');
   };
 
   const handleOnClick = (e) => {
@@ -25,7 +22,10 @@ export default function InputBox(props) {
   };
 
   const onKeyPress = (e) => {
-    if (e.shiftKey && e.charCode === 13) {
+    if (
+      (props.onSendKey === undefined || e[props.onSendKey]) &&
+      e.charCode === 13
+    ) {
       const str = strip(inputText);
       if (str.length) {
         sendMessage(str);
@@ -46,11 +46,7 @@ export default function InputBox(props) {
         maxRows={3}
         className="react-chat-textarea"
         placeholder={
-          props.disabled
-            ? props.disabledInputPlaceholder
-            : props.placeholder
-            ? props.placeholder
-            : 'Press shift + enter to send'
+          props.disabled ? props.disabledInputPlaceholder : props.placeholder
         }
         value={inputText}
         onChange={handleOnChange}
@@ -76,8 +72,9 @@ export default function InputBox(props) {
 }
 
 InputBox.propTypes = {
-  onSendMessage: PropTypes.func,
+  onSendMessage: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
   disabledInputPlaceholder: PropTypes.string,
   placeholder: PropTypes.string,
+  onSendKey: PropTypes.oneOf(KEYS),
 };

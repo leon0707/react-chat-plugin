@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { KEYS } from './constant';
 import InputBox from './InputBox';
 import MessageBox from './MessageBox';
 
@@ -46,6 +47,7 @@ class ChatBox extends React.Component {
       style,
       showTypingIndicator,
       activeAuthor,
+      onSendKey,
     } = this.props;
 
     const messageList = messages.map((message, idx) => {
@@ -90,6 +92,7 @@ class ChatBox extends React.Component {
               disabled={disableInput}
               placeholder={placeholder}
               disabledInputPlaceholder={disabledInputPlaceholder}
+              onSendKey={onSendKey}
             />
           </div>
         </div>
@@ -111,6 +114,7 @@ ChatBox.propTypes = {
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
+  onSendKey: PropTypes.oneOf(KEYS),
 };
 
 ChatBox.defaultProps = {
