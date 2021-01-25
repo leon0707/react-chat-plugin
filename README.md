@@ -17,7 +17,7 @@ This is an easy-to-use react chat plugin.
 5. Typing indicator
 6. Extendable input area
 7. Support new line in the input
-8. Key board action: `shift + enter` to send the message
+8. Key board action: `enter` or `shift/control + enter` to send the message
 
 ## Install
 ```shell
@@ -218,11 +218,11 @@ function Example() {
 | placeholder | "" | string | N |
 | userId | null | string/number | Y |
 | onSendMessage | null | function | Y |
-| timestampFormat | `calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a` | string | N |
+| timestampFormat | `calendar` | [`calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a`] | N |
 | width | 400px | string | N |
 | height | 60vh | string | N |
 | disableInput | false | bool | N |
 | disabledInputPlaceholder | "" | string | N |
 | showTypingIndicator | false | bool | N |
 | activeAuthor | object | null | N |
-| onSendKey | null | 'shiftKey', 'ctrlKey' | N | 
+| onSendKey | null | [`shiftKey`, `ctrlKey`] | N | 
