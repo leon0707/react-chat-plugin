@@ -23,8 +23,10 @@ export default function InputBox(props) {
 
   const onKeyPress = (e) => {
     if (
-      (props.onSendKey === undefined || e[props.onSendKey]) &&
-      e.charCode === 13
+      // standard send with Enter Key
+      (props.onSendKey === undefined && e.charCode === 13) || 
+      // custom send with Shift + Enter
+      (e[props.onSendKey] && e.charCode === 13)
     ) {
       const str = strip(inputText);
       if (str.length) {
