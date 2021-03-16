@@ -51,7 +51,7 @@ export default function InputBox(props) {
         value={inputText}
         onChange={handleOnChange}
         onKeyPress={onKeyPress}
-        autoFocus
+        autoFocus={props.autofocus}
         disabled={props.disabled}
       />
       <button
@@ -74,6 +74,7 @@ export default function InputBox(props) {
 InputBox.propTypes = {
   onSendMessage: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
+  autofocus: PropTypes.bool,
   disabledInputPlaceholder: PropTypes.string,
   placeholder: PropTypes.string,
   onSendKey: PropTypes.oneOf(KEYS),

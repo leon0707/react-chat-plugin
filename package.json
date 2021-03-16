@@ -57,8 +57,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run-script precommit",
-      "pre-push": "npm run-script prepush && npm run-script build"
+      
     }
   },
   "peerDependencies": {

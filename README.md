@@ -222,6 +222,7 @@ function Example() {
 | width | 400px | string | N |
 | height | 60vh | string | N |
 | disableInput | false | bool | N |
+| autofocus | false | bool | N |
 | disabledInputPlaceholder | "" | string | N |
 | showTypingIndicator | false | bool | N |
 | activeAuthor | object | null | N |
