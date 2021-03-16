@@ -48,6 +48,7 @@ class ChatBox extends React.Component {
       showTypingIndicator,
       activeAuthor,
       onSendKey,
+      autofocus,
     } = this.props;
 
     const messageList = messages.map((message, idx) => {
@@ -90,6 +91,7 @@ class ChatBox extends React.Component {
             <InputBox
               onSendMessage={this.handleOnSendMessage}
               disabled={disableInput}
+              autofocus={autofocus}
               placeholder={placeholder}
               disabledInputPlaceholder={disabledInputPlaceholder}
               onSendKey={onSendKey}
@@ -115,6 +117,7 @@ ChatBox.propTypes = {
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
   onSendKey: PropTypes.oneOf(KEYS),
+  autofocus: PropTypes.bool,
 };
 
 ChatBox.defaultProps = {
