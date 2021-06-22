@@ -75,6 +75,7 @@ class ChatBox extends React.Component {
               onSendMessage={this.handleOnSendMessage}
               disabled={disableInput}
               placeholder={placeholder}
+              multipleFiles={this.props.multipleFiles}
               clearFilesLabel={clearFilesLabel}
               disabledInputPlaceholder={disabledInputPlaceholder}
               onSendKey={onSendKey}
@@ -90,7 +91,7 @@ ChatBox.propTypes = {
   messages: PropTypes.array,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onSendMessage: PropTypes.func.isRequired,
-  onMessageButtonClick: PropTypes.func,
+  onMessageButtonClick: PropTypes.func.isRequired,
   timestampFormat: PropTypes.oneOf(TIMESTAMPFORMAT),
   width: PropTypes.string,
   height: PropTypes.string,
@@ -101,6 +102,7 @@ ChatBox.propTypes = {
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
+  multipleFiles: PropTypes.bool,
   onSendKey: PropTypes.oneOf(KEYS)
 };
 
@@ -108,6 +110,7 @@ ChatBox.defaultProps = {
   messages: [],
   timestampFormat: 'calendar',
   disableInput: false,
+  multipleFiles: true,
   disabledInputPlaceholder: '',
   placeholder: 'Write a message...',
   clearFilesLabel: 'Clear all',
