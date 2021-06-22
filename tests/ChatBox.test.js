@@ -30,9 +30,9 @@ describe('chatBox', () => {
         value: 'hello',
       },
     });
-    const button = wrapper.find('button');
+    const button = wrapper.find('.react-chat-sendButton');
     button.simulate('click');
 
-    expect(onSendFunc).toHaveBeenCalledWith('hello');
+    expect(onSendFunc).toHaveBeenCalledWith('hello', []);
   });
 });

@@ -104,12 +104,12 @@
   text-align: right;
 }
 
-.react-chat-message-buttonGroupLeft a {
+.react-chat-message-buttonGroupLeft a, .react-chat-message-buttonGroupLeft button {
   text-align: center;
   color: #212529;
 }
 
-.react-chat-message-buttonGroupRight a {
+.react-chat-message-buttonGroupRight a, .react-chat-message-buttonGroupRight button {
   text-align: center;
   color: #007bff;
 }
@@ -219,6 +219,19 @@
   background-color: #e4e7eb;
 }
 
+.react-chat-inputBox > .image-upload {
+  margin-right: 3px !important;
+}
+
+.image-upload > input {
+  display: none;
+}
+
+.react-chat-inputBox > .image-upload > label {
+  vertical-align: -webkit-baseline-middle !important;
+  cursor: pointer;
+}
+
 .react-chat-textarea {
   margin: 0;
   padding: 0;
@@ -236,7 +249,41 @@
   resize: none;
 }
 
-.react-chat-sendButton {
+.react-chat-inputBox-selectedFiles {
+  padding: 10px 16px;
+  padding-bottom: 0px !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.react-chat-inputBox-selectedItem {
+  padding-right: 5px;
+  margin-right: 5px;
+  border-bottom: 1px solid gray;
+  border-color: rgba(33, 37, 41, 0.15);
+  background: rgba(33, 37, 41, 0.15);
+  margin-bottom: 7px;
+  padding: 4px;
+}
+
+.react-chat-clearSelectedFiles {
+  background: none;
+  border: 1px solid;
+  border-color: rgb(107 107 107);
+  border-radius: 50px;
+  color: rgb(107 107 107);
+  cursor: pointer;
+  padding: 5px;
+  width: 100%;
+}
+
+.react-chat-clearSelectedFiles:hover {
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.react-chat-sendButton, .react-chat-uploadFileButton, .react-chat-removeSelectedFileButton {
   padding: 0;
   border-color: transparent !important;
   color: inherit;
@@ -264,11 +311,11 @@
   position: relative;
 }
 
-.react-chat-SendIcon:hover {
+.react-chat-SendIcon:hover, .react-chat-AttachmentIcon:hover {
   fill: #007bff;
 }
 
-.react-chat-SendIcon-disable {
+.react-chat-SendIcon-disable, .react-chat-AttachmentIcon-disable {
   fill: #212529;
   cursor: auto;
 }
