@@ -68,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leon0707/react-chat-plugin.git"
+    "url": "git+https://github.com/ergisgjergji/react-chat-plugin.git"
   },
   "keywords": [
     "chat",
@@ -77,11 +77,11 @@
     "chatbot",
     "bot"
   ],
-  "author": "Leon Feng <leonlibinfeng@gmail.com>",
+  "author": "Ergis Gjergji <ergisgjergji@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/leon0707/react-chat-plugin/issues"
   },
-  "homepage": "https://github.com/leon0707/react-chat-plugin",
+  "homepage": "https://github.com/ergisgjergji/react-chat-plugin",
   "snyk": true
 }
