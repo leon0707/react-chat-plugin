@@ -11,6 +11,8 @@
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
     "prepublishOnly": "git push --tags",
+    "prepush": "",
+    "precommit": "",
     "start": "webpack-dev-server --open --mode=development --config example/webpack.config.js"
   },
   "dependencies": {
