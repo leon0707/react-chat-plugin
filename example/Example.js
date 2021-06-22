@@ -121,6 +121,7 @@ const Example = () => {
           messages={attr.messages}
           style={{ width: '300px' }}
           showTypingIndicator={true}
+          multipleFiles={false}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
           onSendKey={'shiftKey'}
           placeHolder='Write a message...'

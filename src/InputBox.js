@@ -103,8 +103,12 @@ import RemoveIcon from './remove.svg';
                   <span>{file.name}</span>
                 </span>
               ))
-            }
-            <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button>
+      }
+      {
+        (props.multipleFiles === true) ? 
+          <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button> :
+          null
+      }
           </div>
       }
       <div className={`react-chat-inputBox ${props.disabled ? 'disabled' : ''}`}>
