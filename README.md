@@ -6,7 +6,7 @@
 
 This is an easy-to-use react chat plugin.
 
-![screenshot 1](./screenshots/screenshot.jpg)
+![screenshot 1](./screenshots/screenshot.png)
 ### [changelog](./changelog.md)
 
 ## Features
@@ -18,10 +18,11 @@ This is an easy-to-use react chat plugin.
 6. Extendable input area
 7. Support new line in the input
 8. Key board action: `enter` or `shift/control + enter` to send the message
+9. Send files along messages
 
 ## Install
 ```shell
-npm install react-chat-plugin --save
+npm install @ergisgjergji/react-chat-plugin --save
 ```
 
 ## Run example
