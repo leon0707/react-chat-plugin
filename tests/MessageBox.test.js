@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import MessageBox from '../src/MessageBox';
 
 describe('messageBox', () => {
+
   it('inputBox - notification', () => {
     expect.assertions(1);
     const wrapper = shallow(

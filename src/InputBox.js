@@ -105,18 +105,18 @@ import RemoveIcon from './remove.svg';
                   <span>{file.name}</span>
                 </span>
               ))
-      }
-      {
-        (props.fileSelectMode === FileSelectMode.Multiple) ? 
-          <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button> :
-          null
-      }
+          }
+          {
+            (props.fileSelectMode === FileSelectMode.Multiple) ? 
+              <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button> :
+              null
+          }
           </div>
       }
       <div className={`react-chat-inputBox ${props.disabled ? 'disabled' : ''}`}>
         {
           (props.fileSelectMode !== FileSelectMode.Disabled) ?
-            <div className="image-upload">
+            <div className="file-select">
               <label htmlFor="attachment-input">
                 <AttachmentIcon className={props.disabled ? 'react-chat-AttachmentIcon-disable' : 'react-chat-AttachmentIcon'} />
               </label>

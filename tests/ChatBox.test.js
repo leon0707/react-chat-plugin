@@ -8,7 +8,12 @@ describe('chatBox', () => {
   const onSendFunc = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(<ChatBox userId={1} onSendMessage={onSendFunc} />);
+    wrapper = mount(
+      <ChatBox 
+        userId={1} 
+        onSendMessage={onSendFunc} 
+      />
+    );
   });
 
   afterEach(() => {

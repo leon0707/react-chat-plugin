@@ -219,15 +219,15 @@
   background-color: #e4e7eb;
 }
 
-.react-chat-inputBox > .image-upload {
+.react-chat-inputBox > .file-select {
   margin-right: 3px !important;
 }
 
-.image-upload > input {
+.file-select > input {
   display: none;
 }
 
-.react-chat-inputBox > .image-upload > label {
+.react-chat-inputBox > .file-select > label {
   vertical-align: -webkit-baseline-middle !important;
   cursor: pointer;
 }
