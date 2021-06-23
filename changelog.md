@@ -3,14 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org)
 
-# v0.2.23
-### 6/22/2021
-- removed `onSendKey` as obsolette. Default behavior now is: `enter` to send message, `shift + enter` for new line
-
-# v0.2.0 - v.0.2.22
+# v0.2.0
 ### 6/22/2021
 - added ability to send files along with a message (upload file)
 - ability to handle the click of a message-button
+- removed `onSendKey` as obsolette. Default behavior now is: `enter` to send message, `shift + enter` for new line
 
 # v0.1.17
 ### 1/25/2021
