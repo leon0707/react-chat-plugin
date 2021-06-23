@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { KEYS, TIMESTAMPFORMAT } from './constant';
+import { FileSelectMode, FILE_SELECT_MODE, KEYS, TIMESTAMPFORMAT } from './constant';
 import InputBox from './InputBox';
 import MessageBox from './MessageBox';
 
@@ -75,7 +75,7 @@ class ChatBox extends React.Component {
               onSendMessage={this.handleOnSendMessage}
               disabled={disableInput}
               placeholder={placeholder}
-              multipleFiles={this.props.multipleFiles}
+              fileSelectMode={this.props.fileSelectMode}
               clearFilesLabel={clearFilesLabel}
               disabledInputPlaceholder={disabledInputPlaceholder}
               onSendKey={onSendKey}
@@ -102,7 +102,7 @@ ChatBox.propTypes = {
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
-  multipleFiles: PropTypes.bool,
+  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
   onSendKey: PropTypes.oneOf(KEYS)
 };
 
@@ -110,7 +110,7 @@ ChatBox.defaultProps = {
   messages: [],
   timestampFormat: 'calendar',
   disableInput: false,
-  multipleFiles: true,
+  fileSelectMode: FileSelectMode.Multiple,
   disabledInputPlaceholder: '',
   placeholder: 'Write a message...',
   clearFilesLabel: 'Clear all',

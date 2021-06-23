@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ChatBox, { ChatFrame } from '../src';
+import { FileSelectMode } from '../src/constant';
 
 import RobotIcon from './bot.svg';
 import './Example.css';
@@ -121,7 +122,7 @@ const Example = () => {
           messages={attr.messages}
           style={{ width: '300px' }}
           showTypingIndicator={true}
-          multipleFiles={false}
+          fileSelectMode={FileSelectMode.Disabled}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
           onSendKey={'shiftKey'}
           placeHolder='Write a message...'

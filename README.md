@@ -278,8 +278,8 @@ function Example() {
 | onSendMessage | null | function | Y |   |
 | onMessageButtonClick | null | function | Y | A handler for when you click a message button. Takes as parameter the button's payload. |
 | timestampFormat | `calendar` | [`calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a`] | N |   |
-| multipleFiles | true | bool | N | Determines whether you want the ability to select multiple files, or 1 file. |
-| clearFilesLabel | "Clear all" | string | N |  |
+| fileSelectMode | `MULTIPLE` | [`SINGLE`, `MULTIPLE`, `DISABLED`] | N | Determines whether you want the ability to select file(s). |
+| clearFilesLabel | `Clear all` | string | N | Just the text of the button that appears to clear all selected files. |
 | width | 400px | string | N |   |
 | height | 60vh | string | N |   |
 | disableInput | false | bool | N |   |

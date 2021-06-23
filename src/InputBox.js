@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-textarea-autosize';
 import { strip } from './utils';
-import { KEYS } from './constant';
+import { FileSelectMode, FILE_SELECT_MODE, KEYS } from './constant';
 import SendIcon from './sendIcon.svg';
 import AttachmentIcon from './attachment.svg';
 import RemoveIcon from './remove.svg';
@@ -29,7 +29,7 @@ import RemoveIcon from './remove.svg';
     let currFiles = e.target.files;
     let files = [...selectedFiles];
 
-    if(props.multipleFiles === false) {
+    if(props.fileSelectMode === FileSelectMode.Single) {
       setSelectedFiles([currFiles[0]])
     }
     else {
@@ -105,23 +105,27 @@ import RemoveIcon from './remove.svg';
               ))
       }
       {
-        (props.multipleFiles === true) ? 
+        (props.fileSelectMode === FileSelectMode.Multiple) ? 
           <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button> :
           null
       }
           </div>
       }
       <div className={`react-chat-inputBox ${props.disabled ? 'disabled' : ''}`}>
-        <div className="image-upload">
-          <label htmlFor="attachment-input">
-            <AttachmentIcon className={props.disabled ? 'react-chat-AttachmentIcon-disable' : 'react-chat-AttachmentIcon'} />
-          </label>
-          {
-            (props.multipleFiles === false) ?
-              <input ref={fileInput} type="file" id="attachment-input" className="react-chat-uploadFileButton" onChange={onFileUpload} disabled={props.disabled} /> :
-              <input ref={fileInput} type="file" multiple id="attachment-input" className="react-chat-uploadFileButton" onChange={onFileUpload} disabled={props.disabled} />
-          }
-        </div>
+        {
+          (props.fileSelectMode !== FileSelectMode.Disabled) ?
+            <div className="image-upload">
+              <label htmlFor="attachment-input">
+                <AttachmentIcon className={props.disabled ? 'react-chat-AttachmentIcon-disable' : 'react-chat-AttachmentIcon'} />
+              </label>
+              {
+                (props.fileSelectMode === FileSelectMode.Single) ?
+                  <input ref={fileInput} type="file" id="attachment-input" className="react-chat-uploadFileButton" onChange={onFileUpload} disabled={props.disabled} /> :
+                  <input ref={fileInput} type="file" multiple id="attachment-input" className="react-chat-uploadFileButton" onChange={onFileUpload} disabled={props.disabled} />
+              }
+            </div> 
+            : null
+        }
         <TextareaAutosize
           maxRows={3}
           className="react-chat-textarea"
@@ -147,7 +151,7 @@ InputBox.propTypes = {
   placeholder: PropTypes.string,
   clearFilesLabel: PropTypes.string,
   onSendKey: PropTypes.oneOf(KEYS),
-  multipleFiles: PropTypes.bool
+  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE)
 };
 
 InputBox.defaultProps = {
@@ -157,7 +161,7 @@ InputBox.defaultProps = {
   placeholder: 'Write a message...',
   clearFilesLabel: 'Clear all',
   onSendKey: undefined,
-  multipleFiles: true
+  fileSelectMode: FileSelectMode.Multiple
 };
 
 export default InputBox;
