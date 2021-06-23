@@ -3,12 +3,17 @@ import { mount } from 'enzyme';
 
 import InputBox from '../src/InputBox';
 
-describe('inputBox', () => {
+describe('inputBox fileSelectMode-disabled)', () => {
   let wrapper;
   const paraFunc = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(<InputBox onSendMessage={paraFunc} />);
+    wrapper = mount(
+      <InputBox 
+        onSendMessage={paraFunc}
+        fileSelectMode='DISABLED'
+      />
+    );
   });
 
   afterEach(() => {
@@ -42,80 +47,33 @@ describe('inputBox', () => {
       },
     });
 
-    const button = wrapper.find('button');
+    const button = wrapper.find('.react-chat-sendButton');
     button.simulate('click');
-    expect(paraFunc).toHaveBeenCalledWith('hello');
+    expect(paraFunc).toHaveBeenCalledWith('hello', []);
     expect(textarea.instance().value).toStrictEqual('');
   });
 });
 
-describe('inputBox onSendKey', () => {
+describe('inputBox fileSelectMode-single', () => {
   let wrapper;
   const paraFunc = jest.fn();
+
+  beforeEach(() => {
+    wrapper = mount(
+      <InputBox 
+        onSendMessage={paraFunc}
+        fileSelectMode='SINGLE'
+      />
+    );
+  });
 
   afterEach(() => {
     wrapper.unmount();
   });
 
-  it('inputBox - sitimulate enter press', () => {
-    expect.assertions(2);
-    wrapper = mount(<InputBox onSendMessage={paraFunc} />);
-    const textarea = wrapper.find('textarea');
-    textarea.simulate('change', {
-      target: {
-        value: 'hello',
-      },
-    });
-    textarea.simulate('keypress', {
-      charCode: 13,
-    });
-    expect(paraFunc).toHaveBeenCalledWith('hello');
-    expect(textarea.instance().value).toStrictEqual('');
+  it('inputBox - render', () => {
+    expect.assertions(1);
+    expect(wrapper.find('.react-chat-uploadFileButton')).toBeDefined();
   });
-
-  it('inputBox - sitimulate shift press', () => {
-    expect.assertions(3);
-    wrapper = mount(
-      <InputBox onSendMessage={paraFunc} onSendKey={'shiftKey'} />
-    );
-    const textarea = wrapper.find('textarea');
-    textarea.simulate('change', {
-      target: {
-        value: 'hello',
-      },
-    });
-    textarea.simulate('keypress', {
-      charCode: 13,
-    });
-    expect(paraFunc).not.toHaveBeenCalledWith();
-    textarea.simulate('keypress', {
-      shiftKey: true,
-      charCode: 13,
-    });
-    expect(paraFunc).toHaveBeenCalledWith('hello');
-    expect(textarea.instance().value).toStrictEqual('');
-  });
-
-  it('inputBox - sitimulate control press', () => {
-    expect.assertions(3);
-    wrapper = mount(
-      <InputBox onSendMessage={paraFunc} onSendKey={'ctrlKey'} />
-    );
-    const textarea = wrapper.find('textarea');
-    textarea.simulate('change', {
-      target: {
-        value: 'hello',
-      },
-    });
-    textarea.simulate('keypress', {
-      charCode: 13,
-    });
-    expect(paraFunc).not.toHaveBeenCalledWith();
-    textarea.simulate('keypress', {
-      ctrlKey: true,
-      charCode: 13,
-    });
-    expect(paraFunc).toHaveBeenCalledWith('hello');
-    expect(textarea.instance().value).toStrictEqual('');
-  });
+  
 });
