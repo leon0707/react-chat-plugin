@@ -131,7 +131,7 @@ const handleOnMessageButtonClick = (payload) => {
   onMessageButtonClick={handleOnMessageButtonClick}
   width={'500px'}
   height={'500px'}
-  selectFileMode='MULTIPLE'
+  fileSelectMode='MULTIPLE'
 />;
 ```
 
@@ -254,7 +254,7 @@ function Example() {
           width={'300px'}
           showTypingIndicator={true}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
-          selectFileMode='MULTIPLE'
+          fileSelectMode='MULTIPLE'
         />
       }
       icon={<RobotIcon className="Icon" />}
