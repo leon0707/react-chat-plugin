@@ -40,7 +40,7 @@ class ChatBox extends React.Component {
   }
 
   render() {
-    const { messages, userId, timestampFormat, height, width, disableInput, disabledInputPlaceholder, placeholder, clearFilesLabel, style, showTypingIndicator, activeAuthor, onSendKey } = this.props;
+    const { messages, userId, timestampFormat, height, width, disableInput, disabledInputPlaceholder, placeholder, clearFilesLabel, style, showTypingIndicator, activeAuthor } = this.props;
 
     const messageList = messages.map((message, idx) => {
       return (
@@ -78,7 +78,6 @@ class ChatBox extends React.Component {
               fileSelectMode={this.props.fileSelectMode}
               clearFilesLabel={clearFilesLabel}
               disabledInputPlaceholder={disabledInputPlaceholder}
-              onSendKey={onSendKey}
             />
           </div>
         </div>
@@ -91,7 +90,7 @@ ChatBox.propTypes = {
   messages: PropTypes.array,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onSendMessage: PropTypes.func.isRequired,
-  onMessageButtonClick: PropTypes.func.isRequired,
+  onMessageButtonClick: PropTypes.func,
   timestampFormat: PropTypes.oneOf(TIMESTAMPFORMAT),
   width: PropTypes.string,
   height: PropTypes.string,
@@ -102,8 +101,7 @@ ChatBox.propTypes = {
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
-  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
-  onSendKey: PropTypes.oneOf(KEYS)
+  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE)
 };
 
 ChatBox.defaultProps = {

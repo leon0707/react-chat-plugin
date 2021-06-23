@@ -44,14 +44,16 @@ import RemoveIcon from './remove.svg';
   }
 
   const resetFileInput = () => {
-    try {
-      fileInput.current.value = null
-    }
-    catch(e) {}
-    finally {
-      // For old browsers support, like: IE8, IE9, IE10 etc.
-      if (fileInput.current.value) {
-        fileInput.current.parentNode.replaceChild(fileInput.current.cloneNode(true), fileInput.current);
+    if(fileInput && fileInput.current) {
+      try {
+        fileInput.current.value = null
+      }
+      catch(e) {}
+      finally {
+        // For old browsers support, like: IE8, IE9, IE10 etc.
+        if (fileInput.current.value) {
+          fileInput.current.parentNode.replaceChild(fileInput.current.cloneNode(true), fileInput.current);
+        }
       }
     }
   }
@@ -69,12 +71,12 @@ import RemoveIcon from './remove.svg';
   }
 
   const onKeyPress = (e) => {
-    if ((props.onSendKey === undefined || e[props.onSendKey]) && e.charCode === 13) {
+    if(e.charCode === 13 && !e['shiftKey']) {
       const str = strip(inputText);
 
       if (str.length || (selectedFiles && selectedFiles.length > 0))
         sendMessage(str, selectedFiles);
-
+        
       e.preventDefault();
       return false;
     }
@@ -150,7 +152,6 @@ InputBox.propTypes = {
   disabledInputPlaceholder: PropTypes.string,
   placeholder: PropTypes.string,
   clearFilesLabel: PropTypes.string,
-  onSendKey: PropTypes.oneOf(KEYS),
   fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE)
 };
 
@@ -160,7 +161,6 @@ InputBox.defaultProps = {
   disabledInputPlaceholder: '',
   placeholder: 'Write a message...',
   clearFilesLabel: 'Clear all',
-  onSendKey: undefined,
   fileSelectMode: FileSelectMode.Multiple
 };
 

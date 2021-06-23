@@ -124,7 +124,6 @@ const Example = () => {
           showTypingIndicator={true}
           fileSelectMode={FileSelectMode.Disabled}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
-          onSendKey={'shiftKey'}
           placeHolder='Write a message...'
           clearFilesLabel='Clear all'
         />
