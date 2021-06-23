@@ -17,7 +17,7 @@ This is an easy-to-use react chat plugin.
 5. Typing indicator
 6. Extendable input area
 7. Support new line in the input
-8. Key board action: `enter` or `shift/control + enter` to send the message
+8. Key board action: `enter` to send message; `shift + enter` to insert new line
 9. Send files along messages
 
 ## Install
@@ -131,6 +131,7 @@ const handleOnMessageButtonClick = (payload) => {
   onMessageButtonClick={handleOnMessageButtonClick}
   width={'500px'}
   height={'500px'}
+  selectFileMode='MULTIPLE'
 />;
 ```
 
@@ -253,6 +254,7 @@ function Example() {
           width={'300px'}
           showTypingIndicator={true}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          selectFileMode='MULTIPLE'
         />
       }
       icon={<RobotIcon className="Icon" />}
@@ -286,4 +288,3 @@ function Example() {
 | disabledInputPlaceholder | "" | string | N |   |
 | showTypingIndicator | false | bool | N |   |
 | activeAuthor | object | null | N |   |
-| onSendKey | null | [`shiftKey`, `ctrlKey`] | N |   |
