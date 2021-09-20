@@ -1,11 +1,13 @@
 import React from 'react';
 import moment from 'moment';
 
-import ErrorIcon from './errorIcon.svg';
-import avatar from './placeholder.png';
+import './MessageBox.css';
+import ErrorIcon from '../assets/errorIcon.svg';
+import avatar from '../assets/placeholder.png';
 
 const MessageBox = (props) => {
-  const { type, timestamp, timestampFormat, buttons, left, author, hasError, text, } = props;
+  // Tip: to identify if message is yours or not, use `left`. `left` means it's not your message
+  const { type, timestamp, timestampFormat, buttons, left, author, hasError, text, authorFor } = props;
 
   if (type === 'text' || type === 'indicator') {
     let time;
@@ -42,8 +44,15 @@ const MessageBox = (props) => {
             <img alt="avater img" src={author.avatarUrl} className={`react-chat-avatar ${left ? 'react-chat-avatarLeft' : 'react-chat-avatarRight'}`} />
         }
         <div className={`react-chat-message ${left ? 'react-chat-messageLeft' : 'react-chat-messageRight'}`}>
-          <div className="react-chat-additional">{author.username}</div>
+
+          <div className="react-chat-additional">
+            {author.username} 
+            {left && authorFor && " (private)"}
+            {left === false && authorFor && ` to ${authorFor.username} (private)`}
+          </div>
+
           <div className={`react-chat-bubble ${left ? 'react-chat-leftBubble' : 'react-chat-rightBubble'} ${hasError ? 'react-chat-bubbleWithError' : ''}`}>
+
             {type === 'indicator' && (
               <div className="react-chat-typing-indicator">
                 <span></span>
@@ -51,15 +60,21 @@ const MessageBox = (props) => {
                 <span></span>
               </div>
             )}
+
             {text}
+
             {_buttons.length > 0 && (
               <div className={left ? 'react-chat-message-buttonGroupLeft' : 'react-chat-message-buttonGroupRight'}>
                 {_buttons}
               </div>
             )}
+
             {hasError && <ErrorIcon className={`${left ? 'react-chat-errorLeft' : 'react-chat-errorRight'} react-chat-error`} />}
+
           </div>
+
           <div className="react-chat-additional">{time !== null && time}</div>
+
         </div>
       </div>
     );

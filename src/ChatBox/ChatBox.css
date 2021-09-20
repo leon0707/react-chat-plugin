@@ -1,0 +1,115 @@
+.react-chat-container {
+  width: 100%;
+  /* padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto; */
+}
+
+.react-chat-row {
+  display: flex;
+  flex-wrap: wrap;
+  /* margin-right: -15px;
+  margin-left: -15px; */
+}
+
+@media (min-width: 1200px) {
+  .react-chat-container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 992px) {
+  .react-chat-container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 768px) {
+  .react-chat-container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 576px) {
+  .react-chat-container {
+    max-width: 540px;
+  }
+}
+
+.react-chat-viewerBox {
+  border-color: rgba(33, 37, 41, 0.15);
+  color: #212529;
+  background-color: #fff;
+  min-height: 300px;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* width: 400px;
+  max-width: 500px; */
+  /* margin: auto 20px; */
+  border-width: 1px;
+  border-style: solid;
+  outline: 0;
+}
+
+.react-chat-messagesList {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: inherit;
+}
+  /* width */
+  .react-chat-messagesList::-webkit-scrollbar {
+    width: 6px;
+  } 
+  /* Track */
+  .react-chat-messagesList::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }  
+  /* Handle */
+  .react-chat-messagesList::-webkit-scrollbar-thumb {
+    background: #a9a9a9; 
+  }
+  /* Handle on hover */
+  .react-chat-messagesList::-webkit-scrollbar-thumb:hover {
+    background: rgb(141, 141, 141); 
+  }
+
+.react-chat-messagesListContent {
+  padding: 16px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+@-webkit-keyframes bulge {
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+@keyframes bulge {
+  50% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}

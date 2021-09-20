@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-textarea-autosize';
-import { strip } from './utils';
-import { FileSelectMode, FILE_SELECT_MODE, KEYS } from './constant';
-import SendIcon from './sendIcon.svg';
-import AttachmentIcon from './attachment.svg';
-import RemoveIcon from './remove.svg';
+import { strip } from '../utils';
+import { FileSelectMode, FILE_SELECT_MODE, KEYS } from '../constant';
+import './InputBox.css';
+import SendIcon from '../assets/sendIcon.svg';
+import AttachmentIcon from '../assets/attachment.svg';
+import RemoveIcon from '../assets/remove.svg';
 
- const InputBox = (props) => {
+const InputBox = (props) => {
+  // State
   const [inputText, setInputText] = useState('');
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const [authorIdFor, setAuthorIdFor] = useState("0");
   const fileInput = useRef(null);
 
   const handleOnChange = (e) => {
@@ -70,6 +73,10 @@ import RemoveIcon from './remove.svg';
     resetFileInput();
   }
 
+  const onSelectMessageReceiver = (e) => {
+    setAuthorIdFor(e.target.value);
+  }
+
   const onKeyPress = (e) => {
     if(e.charCode === 13 && !e['shiftKey']) {
       const str = strip(inputText);
@@ -85,7 +92,7 @@ import RemoveIcon from './remove.svg';
   const sendMessage = (message, files = []) => {
     if(!files)
       files = []
-    props.onSendMessage(message, files);
+    props.onSendMessage(message, files, authorIdFor);
     setInputText('');
     setSelectedFiles([]);
     resetFileInput();
@@ -93,6 +100,7 @@ import RemoveIcon from './remove.svg';
 
   return (
     <>
+      {/* region: Selected files (when fileSelectMode enabled) */}
       {
         (!selectedFiles || selectedFiles.length === 0) ? null :
           <div className="react-chat-inputBox-selectedFiles">
@@ -113,6 +121,19 @@ import RemoveIcon from './remove.svg';
           }
           </div>
       }
+
+      {/* region: Authors dropdown (for direct messaging) */}
+      {
+        (props.allowDirectMessage === false) ? null :
+          <select className="react-chat-inputBox-targetReceiver" onChange={onSelectMessageReceiver} value={authorIdFor}>
+            <option key="0" value="0"> Everyone {/* Internationalization */} </option>
+            {
+              props.authors.map(author => <option key={author.id} value={author.id}> {author.username} </option>)
+            }
+          </select>
+      }
+
+      {/* region: Input box */}
       <div className={`react-chat-inputBox ${props.disabled ? 'disabled' : ''}`}>
         {
           (props.fileSelectMode !== FileSelectMode.Disabled) ?
@@ -152,7 +173,9 @@ InputBox.propTypes = {
   disabledInputPlaceholder: PropTypes.string,
   placeholder: PropTypes.string,
   clearFilesLabel: PropTypes.string,
-  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE)
+  fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
+  allowDirectMessage: PropTypes.bool,
+  authors: PropTypes.array
 };
 
 InputBox.defaultProps = {
@@ -161,7 +184,9 @@ InputBox.defaultProps = {
   disabledInputPlaceholder: '',
   placeholder: 'Write a message...',
   clearFilesLabel: 'Clear all',
-  fileSelectMode: FileSelectMode.Multiple
+  fileSelectMode: FileSelectMode.Multiple,
+  allowDirectMessage: false,
+  authors: []
 };
 
 export default InputBox;

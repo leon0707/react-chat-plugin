@@ -1,0 +1,154 @@
+.react-chat-inputBox {
+    /*border-color: inherit;*/
+    color: #212529;
+    background-color: #fff;
+    padding: 10px 16px;
+    /*    border-width: 1px 0 0;
+        border-style: solid;*/
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.react-chat-inputBox > .file-select {
+    margin-right: 3px !important;
+}
+
+.file-select > input {
+    display: none;
+}
+
+.react-chat-inputBox > .file-select > label {
+    vertical-align: -webkit-baseline-middle !important;
+    cursor: pointer;
+}
+
+.react-chat-textarea {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    background: none;
+    flex: 1 1 auto;
+    width: 100%;
+    box-sizing: border-box;
+    outline: 0;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    -webkit-appearance: none;
+    resize: none;
+}
+
+.react-chat-inputBox-selectedFiles {
+    padding: 10px 16px;
+    padding-bottom: 0px !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: auto;
+}
+
+.react-chat-inputBox-selectedItem {
+    padding-right: 5px;
+    margin-right: 5px;
+    border-bottom: 1px solid gray;
+    border-color: rgba(33, 37, 41, 0.15);
+    background: rgba(33, 37, 41, 0.15);
+    margin-bottom: 7px;
+    padding: 4px;
+}
+  
+.react-chat-clearSelectedFiles {
+    background: none;
+    border: 1px solid;
+    border-color: rgb(107 107 107);
+    border-radius: 50px;
+    color: rgb(107 107 107);
+    cursor: pointer;
+    padding: 5px;
+    width: 100%;
+}
+  
+.react-chat-clearSelectedFiles:hover {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.react-chat-sendButton, .react-chat-uploadFileButton, .react-chat-removeSelectedFileButton {
+    padding: 0;
+    border-color: transparent !important;
+    color: inherit;
+    background: none !important;
+    box-shadow: none !important;
+    transition: color 0.2s ease-in-out;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-family: inherit;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
+    -webkit-appearance: none;
+    position: relative;
+  }
+  
+  .react-chat-SendIcon:hover, .react-chat-AttachmentIcon:hover {
+    fill: #007bff;
+  }
+  
+  .react-chat-SendIcon-disable, .react-chat-AttachmentIcon-disable {
+    fill: #212529;
+    cursor: auto;
+  }
+
+/* ------------------------------------------- Scrollbar -------------------------------------------  */
+/* width */
+.react-chat-inputBox-selectedFiles::-webkit-scrollbar {
+    width: 6px;
+} 
+/* Track */
+.react-chat-inputBox-selectedFiles::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}  
+/* Handle */
+.react-chat-inputBox-selectedFiles::-webkit-scrollbar-thumb {
+    background: #a9a9a9; 
+}
+/* Handle on hover */
+.react-chat-inputBox-selectedFiles::-webkit-scrollbar-thumb:hover {
+    background: rgb(141, 141, 141); 
+}
+
+.react-chat-inputBox-targetReceiver {
+    display: inline-block;
+    word-wrap: normal;
+    height: calc(1.5em + .5rem + 2px);
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    background-color: red;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    cursor: pointer;
+}
+    .react-chat-inputBox-targetReceiver > option {
+        font-weight: normal;
+        display: block;
+        white-space: nowrap;
+        min-height: 1.2em;
+        padding: 0px 2px 1px;
+    }
+

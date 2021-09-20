@@ -7,6 +7,7 @@ import './Example.css';
 
 const Example = () => {
 
+  const [activeAuthor, setActiveAuthor] = useState({ id: 1, username: 'user1', avatarUrl: null })
   const [attr, setAttr] = useState({
     showChatbox: false,
     showIcon: true,
@@ -59,6 +60,32 @@ const Example = () => {
         timestamp: 1578366425250,
         hasError: true,
       },
+      {
+        author: {
+          username: 'user1',
+          id: 1
+        },
+        authorFor: {
+          username: 'user2',
+          id: 2
+        },
+        text: "Hello",
+        type: 'text',
+        timestamp: 1578366425251
+      },
+      {
+        author: {
+          username: 'user2',
+          id: 2
+        },
+        authorFor: {
+          username: 'user1',
+          id: 1
+        },
+        text: "Hi",
+        type: 'text',
+        timestamp: 1578366425252
+      }
     ],
   });
 
@@ -71,7 +98,7 @@ const Example = () => {
     });
   };
 
-  const handleOnSendMessage = (message, files = []) => {
+  const handleOnSendMessage = (message, files = [], authorIdFor = "0") => {
     /*
       In this example, we are receiving the actual files.
       In a real-world scenario, you would post the message, along with the files, to an endpoint/websocket,
@@ -80,16 +107,20 @@ const Example = () => {
       So, in this simple example, I fake a link/url for each file, using: URL.createObjectURL()
     */
 
+    console.log('Direct message to authorId: ', authorIdFor);
+
     let currMessage = {
       author: {
         username: 'user1',
-        id: 1,
-        avatarUrl: 'https://image.flaticon.com/icons/svg/2446/2446032.svg',
+        id: 1
       },
       text: message,
       type: 'text',
       timestamp: +new Date()
     };
+
+    if(authorIdFor && authorIdFor !== "0")
+      currMessage.authorFor = { id: authorIdFor, username: `user${authorIdFor}` };
 
     if(files && files.length > 0) {
       let buttons = []
@@ -122,10 +153,12 @@ const Example = () => {
           messages={attr.messages}
           style={{ width: '300px' }}
           showTypingIndicator={true}
-          fileSelectMode={FileSelectMode.Disabled}
-          activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          fileSelectMode={FileSelectMode.Multiple}
+          activeAuthor={activeAuthor}
           placeHolder='Write a message...'
           clearFilesLabel='Clear all'
+          allowDirectMessage={true}
+          authors={ [{ id: 2, username: 'user2' }, { id: 3, username: 'user3' }] }
         />
       }
       icon={<RobotIcon className="Icon" />}
