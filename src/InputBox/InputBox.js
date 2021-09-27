@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import TextareaAutosize from 'react-textarea-autosize';
 import { strip } from '../utils';
@@ -15,6 +15,10 @@ const InputBox = (props) => {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [authorIdFor, setAuthorIdFor] = useState("0");
   const fileInput = useRef(null);
+
+  useEffect(() => {
+    setAuthorIdFor("0");
+  }, [props.authors])
 
   const handleOnChange = (e) => {
     setInputText(e.target.value);

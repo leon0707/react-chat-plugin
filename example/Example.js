@@ -154,6 +154,7 @@ const Example = () => {
           fileSelectMode={FileSelectMode.Multiple}
           activeAuthor={activeAuthor}
           authors={ [{ id: 2, username: 'user2' }, { id: 3, username: 'user3' }] }
+          allowDirectMessage={false}
         />
       }
       icon={<RobotIcon className="Icon" />}
