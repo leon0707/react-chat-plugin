@@ -8,6 +8,7 @@ import SendIcon from '../assets/sendIcon.svg';
 import AttachmentIcon from '../assets/attachment.svg';
 import RemoveIcon from '../assets/remove.svg';
 import { labels } from '../labels';
+import { useDidUpdate } from '../hooks';
 
 const InputBox = (props) => {
   // State
@@ -16,9 +17,10 @@ const InputBox = (props) => {
   const [authorIdFor, setAuthorIdFor] = useState("0");
   const fileInput = useRef(null);
 
-  useEffect(() => {
-    setAuthorIdFor("0");
-  }, [props.authors])
+  useDidUpdate(() => {
+    if(authorIdFor !== "0" && (props.authors.findIndex(a => a.id.toString() === authorIdFor) === -1))
+      setAuthorIdFor("0");
+  });
 
   const handleOnChange = (e) => {
     setInputText(e.target.value);
@@ -96,7 +98,11 @@ const InputBox = (props) => {
 
   const sendMessage = (message, files = []) => {
     if(!files)
-      files = []
+      files = [];
+      
+    if(authorIdFor !== "0" && (props.authors.findIndex(a => a.id.toString() === authorIdFor) === -1))
+      setAuthorIdFor("0");
+
     props.onSendMessage(message, files, authorIdFor);
     setInputText('');
     setSelectedFiles([]);
@@ -181,7 +187,7 @@ InputBox.propTypes = {
   disabled: PropTypes.bool,
   fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
   allowDirectMessage: PropTypes.bool,
-  authors: PropTypes.array
+  authors: PropTypes.array // Array of objects like: { id: x, username: 'xxx' }
 };
 
 InputBox.defaultProps = {
