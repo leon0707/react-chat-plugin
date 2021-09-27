@@ -132,19 +132,23 @@
 }
 
 .react-chat-inputBox-targetReceiver {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    font-size: .875rem;
+    color: #495057;
+}
+
+.react-chat-inputBox-targetReceiver > select {
+    flex-grow: 1;
     word-wrap: normal;
     height: calc(1.5em + .5rem + 2px);
     padding: .25rem .5rem;
-    font-size: .875rem;
-    background-color: red;
-    color: #495057;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     cursor: pointer;
 }
-    .react-chat-inputBox-targetReceiver > option {
+    .react-chat-inputBox-targetReceiver > select > option {
         font-weight: normal;
         display: block;
         white-space: nowrap;

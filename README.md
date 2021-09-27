@@ -275,16 +275,14 @@ function Example() {
 | prop | default | type | required | description |
 | ---- | ---- | ---- | ---- | ---- |
 | messages | [] | array | N |   |
-| placeholder | "" | string | N |   |
 | userId | null | string/number | Y |   |
 | onSendMessage | null | function | Y |   |
 | onMessageButtonClick | null | function | Y | A handler for when you click a message button. Takes as parameter the button's payload. |
 | timestampFormat | `calendar` | [`calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a`] | N |   |
 | fileSelectMode | `MULTIPLE` | [`SINGLE`, `MULTIPLE`, `DISABLED`] | N | Determines whether you want the ability to select file(s). |
-| clearFilesLabel | `Clear all` | string | N | Just the text of the button that appears to clear all selected files. |
 | width | 400px | string | N |   |
 | height | 60vh | string | N |   |
 | disableInput | false | bool | N |   |
-| disabledInputPlaceholder | "" | string | N |   |
 | showTypingIndicator | false | bool | N |   |
-| activeAuthor | object | null | N |   |
+| activeAuthor | null | object | N |   |
+| labels | `{ placeholder: "Write a message...", disabledPlaceholder: "", clearFiles: "Clear all", everyone: "Everyone", to: "To", private: "private" }` | object | N | The translation should be handled by the consumers of this package. The consumers should pass the translated `messages`. The package simply prints the text by using the `keys` of the `messages`. |

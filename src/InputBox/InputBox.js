@@ -7,6 +7,7 @@ import './InputBox.css';
 import SendIcon from '../assets/sendIcon.svg';
 import AttachmentIcon from '../assets/attachment.svg';
 import RemoveIcon from '../assets/remove.svg';
+import { labels } from '../labels';
 
 const InputBox = (props) => {
   // State
@@ -116,7 +117,7 @@ const InputBox = (props) => {
           }
           {
             (props.fileSelectMode === FileSelectMode.Multiple) ? 
-              <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}>{props.clearFilesLabel}</button> :
+              <button className="react-chat-clearSelectedFiles" onClick={onClearSelectedFiles}> {props.labels.clearFiles} </button> :
               null
           }
           </div>
@@ -125,12 +126,15 @@ const InputBox = (props) => {
       {/* region: Authors dropdown (for direct messaging) */}
       {
         (props.allowDirectMessage === false) ? null :
-          <select className="react-chat-inputBox-targetReceiver" onChange={onSelectMessageReceiver} value={authorIdFor}>
-            <option key="0" value="0"> Everyone {/* Internationalization */} </option>
-            {
-              props.authors.map(author => <option key={author.id} value={author.id}> {author.username} </option>)
-            }
-          </select>
+          <div className="react-chat-inputBox-targetReceiver">
+            <span> {props.labels.to}: </span>
+            <select onChange={onSelectMessageReceiver} value={authorIdFor}>
+              <option key="0" value="0"> {props.labels.everyone} </option>
+              {
+                props.authors.map(author => <option key={author.id} value={author.id}> {author.username} </option>)
+              }
+            </select>
+          </div>
       }
 
       {/* region: Input box */}
@@ -152,7 +156,7 @@ const InputBox = (props) => {
         <TextareaAutosize
           maxRows={3}
           className="react-chat-textarea"
-          placeholder={props.disabled ? props.disabledInputPlaceholder : props.placeholder}
+          placeholder={props.disabled ? props.labels.disabledPlaceholder : props.labels.placeholder}
           value={inputText}
           onChange={handleOnChange}
           onKeyPress={onKeyPress}
@@ -168,22 +172,18 @@ const InputBox = (props) => {
 }
 
 InputBox.propTypes = {
+  labels: PropTypes.object.isRequired,
   onSendMessage: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
-  disabledInputPlaceholder: PropTypes.string,
-  placeholder: PropTypes.string,
-  clearFilesLabel: PropTypes.string,
   fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
   allowDirectMessage: PropTypes.bool,
   authors: PropTypes.array
 };
 
 InputBox.defaultProps = {
+  labels: labels,
   onSendMessage: null,
   disabled: false,
-  disabledInputPlaceholder: '',
-  placeholder: 'Write a message...',
-  clearFilesLabel: 'Clear all',
   fileSelectMode: FileSelectMode.Multiple,
   allowDirectMessage: false,
   authors: []

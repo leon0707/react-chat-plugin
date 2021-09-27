@@ -107,8 +107,6 @@ const Example = () => {
       So, in this simple example, I fake a link/url for each file, using: URL.createObjectURL()
     */
 
-    console.log('Direct message to authorId: ', authorIdFor);
-
     let currMessage = {
       author: {
         username: 'user1',
@@ -147,17 +145,14 @@ const Example = () => {
     <ChatFrame
       chatbox={
         <ChatBox
+          style={{ width: '300px' }}
           onSendMessage={handleOnSendMessage}
           onMessageButtonClick={handleOnMessageButtonClick}
           userId={1}
           messages={attr.messages}
-          style={{ width: '300px' }}
           showTypingIndicator={true}
           fileSelectMode={FileSelectMode.Multiple}
           activeAuthor={activeAuthor}
-          placeHolder='Write a message...'
-          clearFilesLabel='Clear all'
-          allowDirectMessage={true}
           authors={ [{ id: 2, username: 'user2' }, { id: 3, username: 'user3' }] }
         />
       }

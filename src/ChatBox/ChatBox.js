@@ -6,6 +6,7 @@ import InputBox from '../InputBox/InputBox';
 import MessageBox from '../MessageBox/MessageBox';
 
 import './ChatBox.css';
+import { labels } from '../labels';
 
 class ChatBox extends React.Component {
   constructor(props) {
@@ -41,8 +42,8 @@ class ChatBox extends React.Component {
 
   render() {
     const { 
-      messages, userId, timestampFormat, height, width, disableInput, disabledInputPlaceholder, placeholder, clearFilesLabel, style, showTypingIndicator, activeAuthor,
-      fileSelectMode, allowDirectMessage, authors
+      messages, userId, timestampFormat, height, width, disableInput, style, showTypingIndicator, activeAuthor,
+      fileSelectMode, allowDirectMessage, authors, labels
     } = this.props;
 
     const messageList = messages.map((message, idx) => {
@@ -77,12 +78,10 @@ class ChatBox extends React.Component {
             <InputBox
               onSendMessage={this.handleOnSendMessage}
               disabled={disableInput}
-              placeholder={placeholder}
               fileSelectMode={fileSelectMode}
               allowDirectMessage={allowDirectMessage}
               authors={authors}
-              clearFilesLabel={clearFilesLabel}
-              disabledInputPlaceholder={disabledInputPlaceholder}
+              labels={labels}
             />
           </div>
         </div>
@@ -92,7 +91,7 @@ class ChatBox extends React.Component {
 }
 
 ChatBox.propTypes = {
-  messages: PropTypes.array,
+  messages: PropTypes.array.isRequired,
   userId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   onSendMessage: PropTypes.func.isRequired,
   onMessageButtonClick: PropTypes.func,
@@ -100,15 +99,13 @@ ChatBox.propTypes = {
   width: PropTypes.string,
   height: PropTypes.string,
   disableInput: PropTypes.bool,
-  disabledInputPlaceholder: PropTypes.string,
-  placeholder: PropTypes.string,
-  clearFilesLabel: PropTypes.string,
   style: PropTypes.object,
   showTypingIndicator: PropTypes.bool,
   activeAuthor: PropTypes.object,
   fileSelectMode: PropTypes.oneOf(FILE_SELECT_MODE),
   allowDirectMessage: PropTypes.bool,
-  authors: PropTypes.array
+  authors: PropTypes.array,
+  labels: PropTypes.object.isRequired
 };
 
 ChatBox.defaultProps = {
@@ -116,13 +113,11 @@ ChatBox.defaultProps = {
   timestampFormat: 'calendar',
   disableInput: false,
   fileSelectMode: FileSelectMode.Multiple,
-  disabledInputPlaceholder: '',
-  placeholder: 'Write a message...',
-  clearFilesLabel: 'Clear all',
   showTypingIndicator: false,
   activeAuthor: null,
   allowDirectMessage: false,
-  authors: []
+  authors: [],
+  labels: labels
 };
 
 export default ChatBox;

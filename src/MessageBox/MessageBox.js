@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import './MessageBox.css';
 import ErrorIcon from '../assets/errorIcon.svg';
-import avatar from '../assets/placeholder.png';
+import { labels } from '../labels';
 
 const MessageBox = (props) => {
   // Tip: to identify if message is yours or not, use `left`. `left` means it's not your message
-  const { type, timestamp, timestampFormat, buttons, left, author, hasError, text, authorFor } = props;
+  const { type, timestamp, timestampFormat, buttons, left, author, hasError, text, authorFor, labels } = props;
 
   if (type === 'text' || type === 'indicator') {
     let time;
@@ -46,9 +47,14 @@ const MessageBox = (props) => {
         <div className={`react-chat-message ${left ? 'react-chat-messageLeft' : 'react-chat-messageRight'}`}>
 
           <div className="react-chat-additional">
-            {author.username} 
-            {left && authorFor && " (private)"}
-            {left === false && authorFor && ` to ${authorFor.username} (private)`}
+            {author.username } 
+            {(left === false) && authorFor && ` to ${authorFor.username}`} 
+            {
+              authorFor && 
+              <b id="direct-message">
+                {` (${labels.private})`}
+              </b>
+            }
           </div>
 
           <div className={`react-chat-bubble ${left ? 'react-chat-leftBubble' : 'react-chat-rightBubble'} ${hasError ? 'react-chat-bubbleWithError' : ''}`}>
@@ -87,6 +93,14 @@ const MessageBox = (props) => {
       </div>
     );
   }
+}
+
+MessageBox.propTypes = {
+  labels: PropTypes.object.isRequired
+};
+
+MessageBox.defaultProps = {
+  labels: labels
 }
 
 export default MessageBox;
