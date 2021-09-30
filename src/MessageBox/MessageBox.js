@@ -47,8 +47,12 @@ const MessageBox = (props) => {
         <div className={`react-chat-message ${left ? 'react-chat-messageLeft' : 'react-chat-messageRight'}`}>
 
           <div className="react-chat-additional">
-            {author.username } 
-            {(left === false) && authorFor && ` to ${authorFor.username}`} 
+            {author.username} 
+            {
+              ((left === false) && authorFor) ?
+                <>{` ${labels.to?.toLowerCase() ?? '-'} ${authorFor.username}`}</>
+                : null
+            }
             {
               authorFor && 
               <b id="direct-message">
