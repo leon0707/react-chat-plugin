@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import ChatBox, { ChatFrame } from '../src';
+import { FileSelectMode } from '../src/constant';
 
 import RobotIcon from './bot.svg';
 import './Example.css';
 
-function Example() {
+const Example = () => {
+
+  const [activeAuthor, setActiveAuthor] = useState({ id: 1, username: 'user1', avatarUrl: null })
   const [attr, setAttr] = useState({
     showChatbox: false,
     showIcon: true,
@@ -25,7 +28,11 @@ function Example() {
         timestamp: 1578366393250,
       },
       {
-        author: { username: 'user2', id: 2, avatarUrl: null },
+        author: { 
+          username: 'user2', 
+          id: 2, 
+          avatarUrl: null 
+        },
         text: 'Show two buttons',
         type: 'text',
         timestamp: 1578366425250,
@@ -53,8 +60,35 @@ function Example() {
         timestamp: 1578366425250,
         hasError: true,
       },
+      {
+        author: {
+          username: 'user1',
+          id: 1
+        },
+        authorFor: {
+          username: 'user2',
+          id: 2
+        },
+        text: "Hello",
+        type: 'text',
+        timestamp: 1578366425251
+      },
+      {
+        author: {
+          username: 'user2',
+          id: 2
+        },
+        authorFor: {
+          username: 'user1',
+          id: 1
+        },
+        text: "Hi",
+        type: 'text',
+        timestamp: 1578366425252
+      }
     ],
   });
+
   const handleClickIcon = () => {
     // toggle showChatbox and showIcon
     setAttr({
@@ -63,32 +97,64 @@ function Example() {
       showIcon: !attr.showIcon,
     });
   };
-  const handleOnSendMessage = (message) => {
-    setAttr({
-      ...attr,
-      messages: attr.messages.concat({
-        author: {
-          username: 'user1',
-          id: 1,
-          avatarUrl: 'https://image.flaticon.com/icons/svg/2446/2446032.svg',
-        },
-        text: message,
-        type: 'text',
-        timestamp: +new Date(),
-      }),
-    });
+
+  const handleOnSendMessage = (message, files = [], authorIdFor = "0") => {
+    /*
+      In this example, we are receiving the actual files.
+      In a real-world scenario, you would post the message, along with the files, to an endpoint/websocket,
+      and from the result, you would receive, for example, the link to the file you sent, along with other information, and you would
+      work with the link.
+      So, in this simple example, I fake a link/url for each file, using: URL.createObjectURL()
+    */
+
+    let currMessage = {
+      author: {
+        username: 'user1',
+        id: 1
+      },
+      text: message,
+      type: 'text',
+      timestamp: +new Date()
+    };
+
+    if(authorIdFor && authorIdFor !== "0")
+      currMessage.authorFor = { id: authorIdFor, username: `user${authorIdFor}` };
+
+    if(files && files.length > 0) {
+      let buttons = []
+
+      for(let i = 0; i < files.length; i++) {
+        buttons.push({
+          type: 'URL',
+          title: files[i].name,
+          payload: URL.createObjectURL(files[i])
+        })
+      }
+
+      currMessage.buttons = buttons;
+    }
+
+    setAttr({...attr, messages: [...attr.messages, currMessage]});
   };
+
+  const handleOnMessageButtonClick = (payload) => {
+    alert(`Clicked: ${payload}`);
+  }
+
   return (
     <ChatFrame
       chatbox={
         <ChatBox
+          style={{ width: '300px' }}
           onSendMessage={handleOnSendMessage}
+          onMessageButtonClick={handleOnMessageButtonClick}
           userId={1}
           messages={attr.messages}
-          style={{ width: '300px' }}
           showTypingIndicator={true}
-          activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
-          onSendKey={'shiftKey'}
+          fileSelectMode={FileSelectMode.Multiple}
+          activeAuthor={activeAuthor}
+          authors={ [{ id: 2, username: 'user2' }, { id: 3, username: 'user3' }] }
+          allowDirectMessage={false}
         />
       }
       icon={<RobotIcon className="Icon" />}

@@ -6,7 +6,7 @@
 
 This is an easy-to-use react chat plugin.
 
-![screenshot 1](./screenshots/screenshot.jpg)
+![screenshot 1](./screenshots/screenshot.png)
 ### [changelog](./changelog.md)
 
 ## Features
@@ -17,11 +17,12 @@ This is an easy-to-use react chat plugin.
 5. Typing indicator
 6. Extendable input area
 7. Support new line in the input
-8. Key board action: `enter` or `shift/control + enter` to send the message
+8. Key board action: `enter` to send message; `shift + enter` to insert new line
+9. Send files along messages
 
 ## Install
 ```shell
-npm install react-chat-plugin --save
+npm install @ergisgjergji/react-chat-plugin --save
 ```
 
 ## Run example
@@ -82,27 +83,55 @@ state = {
   ],
 };
 
-handleOnSendMessage = (message) => {
-  this.setState({
-    messages: this.state.messages.concat({
+const handleOnSendMessage = (message, files = []) => {
+    /*
+      In this example, we are receiving the actual files.
+      In a real-world scenario, you would post the message, along with the files, to an endpoint/websocket,
+      and from the result, you would receive, for example, the link to the file you sent, along with other information, and you would
+      work with the link.
+      So, in this simple example, I fake a link/url for each file, using: URL.createObjectURL()
+    */
+
+    let currMessage = {
       author: {
         username: 'user1',
         id: 1,
         avatarUrl: 'https://image.flaticon.com/icons/svg/2446/2446032.svg',
       },
       text: message,
-      timestamp: +new Date(),
       type: 'text',
-    }),
-  });
-};
+      timestamp: +new Date()
+    };
+
+    if(files && files.length > 0) {
+      let buttons = []
+
+      for(let i = 0; i < files.length; i++) {
+        buttons.push({
+          type: 'URL',
+          title: files[i].name,
+          payload: URL.createObjectURL(files[i])
+        })
+      }
+
+      currMessage.buttons = buttons;
+    }
+
+    setAttr({...attr, messages: [...attr.messages, currMessage]});
+  };
+
+const handleOnMessageButtonClick = (payload) => {
+    alert(`Clicked: ${payload}`);
+  }
 
 <ChatBox
   messages={this.state.messages}
   userId={1}
   onSendMessage={this.handleOnSendMessage}
+  onMessageButtonClick={handleOnMessageButtonClick}
   width={'500px'}
   height={'500px'}
+  fileSelectMode='MULTIPLE'
 />;
 ```
 
@@ -112,6 +141,7 @@ handleOnSendMessage = (message) => {
 import ChatBox, { ChatFrame } from 'react-chat-plugin';
 
 function Example() {
+
   const [attr, setAttr] = useState({
     showChatbox: false,
     showIcon: true,
@@ -162,6 +192,7 @@ function Example() {
       },
     ],
   });
+  
   const handleClickIcon = () => {
     // toggle showChatbox and showIcon
     setAttr({
@@ -170,31 +201,60 @@ function Example() {
       showIcon: !attr.showIcon,
     });
   };
-  const handleOnSendMessage = (message) => {
-    setAttr({
-      ...attr,
-      messages: attr.messages.concat({
-        author: {
-          username: 'user1',
-          id: 1,
-          avatarUrl: 'https://image.flaticon.com/icons/svg/2446/2446032.svg',
-        },
-        text: message,
-        type: 'text',
-        timestamp: +new Date(),
-      }),
-    });
+  
+  const handleOnSendMessage = (message, files = []) => {
+    /*
+      In this example, we are receiving the actual files.
+      In a real-world scenario, you would post the message, along with the files, to an endpoint/websocket,
+      and from the result, you would receive, for example, the link to the file you sent, along with other information, and you would
+      work with the link.
+      So, in this simple example, I fake a link/url for each file, using: URL.createObjectURL()
+    */
+
+    let currMessage = {
+      author: {
+        username: 'user1',
+        id: 1,
+        avatarUrl: 'https://image.flaticon.com/icons/svg/2446/2446032.svg',
+      },
+      text: message,
+      type: 'text',
+      timestamp: +new Date()
+    };
+
+    if(files && files.length > 0) {
+      let buttons = []
+
+      for(let i = 0; i < files.length; i++) {
+        buttons.push({
+          type: 'URL',
+          title: files[i].name,
+          payload: URL.createObjectURL(files[i])
+        })
+      }
+
+      currMessage.buttons = buttons;
+    }
+
+    setAttr({...attr, messages: [...attr.messages, currMessage]});
   };
+  
+  const handleOnMessageButtonClick = (payload) => {
+    alert(`Clicked: ${payload}`);
+  }
+  
   return (
     <ChatFrame
       chatbox={
         <ChatBox
           onSendMessage={handleOnSendMessage}
+          onMessageButtonClick={handleOnMessageButtonClick}
           userId={1}
           messages={attr.messages}
           width={'300px'}
           showTypingIndicator={true}
           activeAuthor={{ username: 'user2', id: 2, avatarUrl: null }}
+          fileSelectMode='MULTIPLE'
         />
       }
       icon={<RobotIcon className="Icon" />}
@@ -212,17 +272,17 @@ function Example() {
 ```
 
 ## props
-| prop | default | type | required |
-| ---- | ---- | ---- | ---- |
-| messages | [] | array | N |
-| placeholder | "" | string | N |
-| userId | null | string/number | Y |
-| onSendMessage | null | function | Y |
-| timestampFormat | `calendar` | [`calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a`] | N |
-| width | 400px | string | N |
-| height | 60vh | string | N |
-| disableInput | false | bool | N |
-| disabledInputPlaceholder | "" | string | N |
-| showTypingIndicator | false | bool | N |
-| activeAuthor | object | null | N |
-| onSendKey | null | [`shiftKey`, `ctrlKey`] | N | 
+| prop | default | type | required | description |
+| ---- | ---- | ---- | ---- | ---- |
+| messages | [] | array | N |   |
+| userId | null | string/number | Y |   |
+| onSendMessage | null | function | Y |   |
+| onMessageButtonClick | null | function | Y | A handler for when you click a message button. Takes as parameter the button's payload. |
+| timestampFormat | `calendar` | [`calendar`, `fromNow`, `MMMM Do YYYY, h:mm:ss a`] | N |   |
+| fileSelectMode | `MULTIPLE` | [`SINGLE`, `MULTIPLE`, `DISABLED`] | N | Determines whether you want the ability to select file(s). |
+| width | 400px | string | N |   |
+| height | 60vh | string | N |   |
+| disableInput | false | bool | N |   |
+| showTypingIndicator | false | bool | N |   |
+| activeAuthor | null | object | N |   |
+| labels | `{ placeholder: "Write a message...", disabledPlaceholder: "", clearFiles: "Clear all", everyone: "Everyone", to: "To", private: "private" }` | object | N | The translation should be handled by the consumers of this package. The consumers should pass the translated `messages`. The package simply prints the text by using the `keys` of the `messages`. |

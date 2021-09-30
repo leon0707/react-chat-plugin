@@ -8,7 +8,12 @@ describe('chatBox', () => {
   const onSendFunc = jest.fn();
 
   beforeEach(() => {
-    wrapper = mount(<ChatBox userId={1} onSendMessage={onSendFunc} />);
+    wrapper = mount(
+      <ChatBox 
+        userId={1} 
+        onSendMessage={onSendFunc} 
+      />
+    );
   });
 
   afterEach(() => {
@@ -30,9 +35,9 @@ describe('chatBox', () => {
         value: 'hello',
       },
     });
-    const button = wrapper.find('button');
+    const button = wrapper.find('.react-chat-sendButton');
     button.simulate('click');
 
-    expect(onSendFunc).toHaveBeenCalledWith('hello');
+    expect(onSendFunc).toHaveBeenCalledWith('hello', []);
   });
 });

@@ -1,6 +1,6 @@
 {
-  "name": "react-chat-plugin",
-  "version": "0.1.17",
+  "name": "@ergisgjergji/react-chat-plugin",
+  "version": "0.3.13",
   "description": "A chat widget for react app",
   "main": "dist/main.js",
   "scripts": {
@@ -10,9 +10,9 @@
     "eslint": "npx eslint . --fix",
     "prettier": "./node_modules/.bin/prettier --write \"{src,tests}/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
     "snyk": "./node_modules/.bin/snyk test",
-    "prepush": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
-    "precommit": "npm test --watchAll=false && npm run-script eslint && npm run-script snyk",
     "prepublishOnly": "git push --tags",
+    "prepush": "",
+    "precommit": "",
     "start": "webpack-dev-server --open --mode=development --config example/webpack.config.js"
   },
   "dependencies": {
@@ -68,7 +68,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leon0707/react-chat-plugin.git"
+    "url": "git+https://github.com/ergisgjergji/react-chat-plugin.git"
   },
   "keywords": [
     "chat",
@@ -77,11 +77,11 @@
     "chatbot",
     "bot"
   ],
-  "author": "Leon Feng <leonlibinfeng@gmail.com>",
+  "author": "Ergis Gjergji <ergisgjergji@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/leon0707/react-chat-plugin/issues"
   },
-  "homepage": "https://github.com/leon0707/react-chat-plugin",
+  "homepage": "https://github.com/ergisgjergji/react-chat-plugin",
   "snyk": true
 }
